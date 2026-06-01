@@ -1,30 +1,168 @@
 # Root directory
-https://raw.githubusercontent.com/andrewsipe/FontVault/main/.gitmodules
 https://raw.githubusercontent.com/andrewsipe/FontVault/main/FontCore
+https://raw.githubusercontent.com/andrewsipe/FontVault/main/FontVault Import Issues 2026-05-31 2146.txt
+https://raw.githubusercontent.com/andrewsipe/FontVault/main/FontVault Import Issues 2026-06-01 0817.html
+https://raw.githubusercontent.com/andrewsipe/FontVault/main/HANDOFF.md
+https://raw.githubusercontent.com/andrewsipe/FontVault/main/NOTES.md
+https://raw.githubusercontent.com/andrewsipe/FontVault/main/PHASE2_SPEC.md
+https://raw.githubusercontent.com/andrewsipe/FontVault/main/README.md
 
-# FontCore/
-https://raw.githubusercontent.com/andrewsipe/FontCore/main/CoreDemoTool.py
-https://raw.githubusercontent.com/andrewsipe/FontCore/main/README.md
-https://raw.githubusercontent.com/andrewsipe/FontCore/main/__init__.py
-https://raw.githubusercontent.com/andrewsipe/FontCore/main/core_console_config.py
-https://raw.githubusercontent.com/andrewsipe/FontCore/main/core_console_styles.py
-https://raw.githubusercontent.com/andrewsipe/FontCore/main/core_error_handling.py
-https://raw.githubusercontent.com/andrewsipe/FontCore/main/core_file_collector.py
-https://raw.githubusercontent.com/andrewsipe/FontCore/main/core_filename_parts_parser.py
-https://raw.githubusercontent.com/andrewsipe/FontCore/main/core_font_extension.py
-https://raw.githubusercontent.com/andrewsipe/FontCore/main/core_font_metadata.py
-https://raw.githubusercontent.com/andrewsipe/FontCore/main/core_font_sorter.py
-https://raw.githubusercontent.com/andrewsipe/FontCore/main/core_font_style_dictionaries.py
-https://raw.githubusercontent.com/andrewsipe/FontCore/main/core_font_utils.py
-https://raw.githubusercontent.com/andrewsipe/FontCore/main/core_gpos_repair.py
-https://raw.githubusercontent.com/andrewsipe/FontCore/main/core_logging_config.py
-https://raw.githubusercontent.com/andrewsipe/FontCore/main/core_name_policies.py
-https://raw.githubusercontent.com/andrewsipe/FontCore/main/core_nameid_allocator.py
-https://raw.githubusercontent.com/andrewsipe/FontCore/main/core_nameid_replacer_base.py
-https://raw.githubusercontent.com/andrewsipe/FontCore/main/core_namerecord_matcher.py
-https://raw.githubusercontent.com/andrewsipe/FontCore/main/core_ot_label_scanner.py
-https://raw.githubusercontent.com/andrewsipe/FontCore/main/core_stat_builder.py
-https://raw.githubusercontent.com/andrewsipe/FontCore/main/core_string_utils.py
-https://raw.githubusercontent.com/andrewsipe/FontCore/main/core_ttx_table_io.py
-https://raw.githubusercontent.com/andrewsipe/FontCore/main/core_variable_font_detection.py
-https://raw.githubusercontent.com/andrewsipe/FontCore/main/requirements.txt
+# Fixtures/
+https://raw.githubusercontent.com/andrewsipe/FontVault/main/Fixtures/FontVault Import Issues SAMPLE.html
+https://raw.githubusercontent.com/andrewsipe/FontVault/main/Fixtures/Legacy-NoFullName.otf
+
+# Fixtures/FontVault Import Issues SAMPLE PACKAGE/
+https://raw.githubusercontent.com/andrewsipe/FontVault/main/Fixtures/FontVault Import Issues SAMPLE PACKAGE/Import Issues.html
+https://raw.githubusercontent.com/andrewsipe/FontVault/main/Fixtures/FontVault Import Issues SAMPLE PACKAGE/README.txt
+
+# Fixtures/FontVault Import Issues SAMPLE PACKAGE/Failed/
+https://raw.githubusercontent.com/andrewsipe/FontVault/main/Fixtures/FontVault Import Issues SAMPLE PACKAGE/Failed/Corrupt-Regular.otf
+https://raw.githubusercontent.com/andrewsipe/FontVault/main/Fixtures/FontVault Import Issues SAMPLE PACKAGE/Failed/Empty-File.ttf
+
+# Fixtures/FontVault Import Issues SAMPLE PACKAGE/Naming/
+https://raw.githubusercontent.com/andrewsipe/FontVault/main/Fixtures/FontVault Import Issues SAMPLE PACKAGE/Naming/Bulk-Up#1.woff2
+https://raw.githubusercontent.com/andrewsipe/FontVault/main/Fixtures/FontVault Import Issues SAMPLE PACKAGE/Naming/GhostTextMono-MediumItalic.woff2
+https://raw.githubusercontent.com/andrewsipe/FontVault/main/Fixtures/FontVault Import Issues SAMPLE PACKAGE/Naming/Legacy-NoFullName.otf
+https://raw.githubusercontent.com/andrewsipe/FontVault/main/Fixtures/FontVault Import Issues SAMPLE PACKAGE/Naming/MiniatureDisplay-Regular#1.woff2
+
+# FontVault/
+https://raw.githubusercontent.com/andrewsipe/FontVault/main/FontVault/AppState.swift
+https://raw.githubusercontent.com/andrewsipe/FontVault/main/FontVault/FontVault.entitlements
+https://raw.githubusercontent.com/andrewsipe/FontVault/main/FontVault/FontVaultApp.swift
+https://raw.githubusercontent.com/andrewsipe/FontVault/main/FontVault/ListSelectionDisplay.swift
+
+# FontVault.xcodeproj/
+https://raw.githubusercontent.com/andrewsipe/FontVault/main/FontVault.xcodeproj/project.pbxproj
+
+# FontVault.xcodeproj/project.xcworkspace/
+https://raw.githubusercontent.com/andrewsipe/FontVault/main/FontVault.xcodeproj/project.xcworkspace/contents.xcworkspacedata
+
+# FontVault.xcodeproj/project.xcworkspace/xcshareddata/swiftpm/
+https://raw.githubusercontent.com/andrewsipe/FontVault/main/FontVault.xcodeproj/project.xcworkspace/xcshareddata/swiftpm/Package.resolved
+
+# FontVault.xcodeproj/xcshareddata/xcschemes/
+https://raw.githubusercontent.com/andrewsipe/FontVault/main/FontVault.xcodeproj/xcshareddata/xcschemes/FontVault.xcscheme
+
+# FontVault/Assets.xcassets/
+https://raw.githubusercontent.com/andrewsipe/FontVault/main/FontVault/Assets.xcassets/Contents.json
+
+# FontVault/Assets.xcassets/AppIcon.appiconset/
+https://raw.githubusercontent.com/andrewsipe/FontVault/main/FontVault/Assets.xcassets/AppIcon.appiconset/Contents.json
+https://raw.githubusercontent.com/andrewsipe/FontVault/main/FontVault/Assets.xcassets/AppIcon.appiconset/icon_1024.png
+https://raw.githubusercontent.com/andrewsipe/FontVault/main/FontVault/Assets.xcassets/AppIcon.appiconset/icon_128.png
+https://raw.githubusercontent.com/andrewsipe/FontVault/main/FontVault/Assets.xcassets/AppIcon.appiconset/icon_16.png
+https://raw.githubusercontent.com/andrewsipe/FontVault/main/FontVault/Assets.xcassets/AppIcon.appiconset/icon_256 1.png
+https://raw.githubusercontent.com/andrewsipe/FontVault/main/FontVault/Assets.xcassets/AppIcon.appiconset/icon_256.png
+https://raw.githubusercontent.com/andrewsipe/FontVault/main/FontVault/Assets.xcassets/AppIcon.appiconset/icon_32 1.png
+https://raw.githubusercontent.com/andrewsipe/FontVault/main/FontVault/Assets.xcassets/AppIcon.appiconset/icon_32.png
+https://raw.githubusercontent.com/andrewsipe/FontVault/main/FontVault/Assets.xcassets/AppIcon.appiconset/icon_512 1.png
+https://raw.githubusercontent.com/andrewsipe/FontVault/main/FontVault/Assets.xcassets/AppIcon.appiconset/icon_512.png
+https://raw.githubusercontent.com/andrewsipe/FontVault/main/FontVault/Assets.xcassets/AppIcon.appiconset/icon_64.png
+
+# FontVault/Design/
+https://raw.githubusercontent.com/andrewsipe/FontVault/main/FontVault/Design/DesignMetrics.swift
+https://raw.githubusercontent.com/andrewsipe/FontVault/main/FontVault/Design/SheetActionButton.swift
+
+# FontVault/Models/
+https://raw.githubusercontent.com/andrewsipe/FontVault/main/FontVault/Models/AppMenuCopy.swift
+https://raw.githubusercontent.com/andrewsipe/FontVault/main/FontVault/Models/DuplicateGroup.swift
+https://raw.githubusercontent.com/andrewsipe/FontVault/main/FontVault/Models/ExportLayoutMode.swift
+https://raw.githubusercontent.com/andrewsipe/FontVault/main/FontVault/Models/FontDisplayNames.swift
+https://raw.githubusercontent.com/andrewsipe/FontVault/main/FontVault/Models/FontExtractedDetails.swift
+https://raw.githubusercontent.com/andrewsipe/FontVault/main/FontVault/Models/FontFamilyFieldState.swift
+https://raw.githubusercontent.com/andrewsipe/FontVault/main/FontVault/Models/FontFamilySummary.swift
+https://raw.githubusercontent.com/andrewsipe/FontVault/main/FontVault/Models/FontFamilyUniformValues.swift
+https://raw.githubusercontent.com/andrewsipe/FontVault/main/FontVault/Models/FontListCellPresentation.swift
+https://raw.githubusercontent.com/andrewsipe/FontVault/main/FontVault/Models/FontListColumn.swift
+https://raw.githubusercontent.com/andrewsipe/FontVault/main/FontVault/Models/FontListContextMenuActionKind.swift
+https://raw.githubusercontent.com/andrewsipe/FontVault/main/FontVault/Models/FontListContextMenuContext.swift
+https://raw.githubusercontent.com/andrewsipe/FontVault/main/FontVault/Models/FontListGrouping.swift
+https://raw.githubusercontent.com/andrewsipe/FontVault/main/FontVault/Models/FontListOutlineItem.swift
+https://raw.githubusercontent.com/andrewsipe/FontVault/main/FontVault/Models/FontListRowDensity.swift
+https://raw.githubusercontent.com/andrewsipe/FontVault/main/FontVault/Models/FontListURLParsing.swift
+https://raw.githubusercontent.com/andrewsipe/FontVault/main/FontVault/Models/FontMetadataIssues+Database.swift
+https://raw.githubusercontent.com/andrewsipe/FontVault/main/FontVault/Models/FontRecord.swift
+https://raw.githubusercontent.com/andrewsipe/FontVault/main/FontVault/Models/FontSidebarFilter.swift
+https://raw.githubusercontent.com/andrewsipe/FontVault/main/FontVault/Models/FontTableBrowseScope.swift
+https://raw.githubusercontent.com/andrewsipe/FontVault/main/FontVault/Models/ImportFormatOptions.swift
+https://raw.githubusercontent.com/andrewsipe/FontVault/main/FontVault/Models/ImportProgressState.swift
+https://raw.githubusercontent.com/andrewsipe/FontVault/main/FontVault/Models/ImportReport.swift
+https://raw.githubusercontent.com/andrewsipe/FontVault/main/FontVault/Models/InspectorFieldPreference.swift
+https://raw.githubusercontent.com/andrewsipe/FontVault/main/FontVault/Models/LaunchPhase.swift
+https://raw.githubusercontent.com/andrewsipe/FontVault/main/FontVault/Models/ListStatusDetail.swift
+https://raw.githubusercontent.com/andrewsipe/FontVault/main/FontVault/Models/MetadataIssue.swift
+https://raw.githubusercontent.com/andrewsipe/FontVault/main/FontVault/Models/OpenTypeNameIDs.swift
+https://raw.githubusercontent.com/andrewsipe/FontVault/main/FontVault/Models/SettingsTab.swift
+https://raw.githubusercontent.com/andrewsipe/FontVault/main/FontVault/Models/SidebarItem.swift
+https://raw.githubusercontent.com/andrewsipe/FontVault/main/FontVault/Models/StatusBarCopy.swift
+https://raw.githubusercontent.com/andrewsipe/FontVault/main/FontVault/Models/VaultOrganizationHelp.swift
+
+# FontVault/Resources/
+https://raw.githubusercontent.com/andrewsipe/FontVault/main/FontVault/Resources/FontVendorRegistry.json
+
+# FontVault/Services/
+https://raw.githubusercontent.com/andrewsipe/FontVault/main/FontVault/Services/CatalogBrowseSQL.swift
+https://raw.githubusercontent.com/andrewsipe/FontVault/main/FontVault/Services/CatalogOptimizationPolicy.swift
+https://raw.githubusercontent.com/andrewsipe/FontVault/main/FontVault/Services/CatalogStore.swift
+https://raw.githubusercontent.com/andrewsipe/FontVault/main/FontVault/Services/DragExportStaging.swift
+https://raw.githubusercontent.com/andrewsipe/FontVault/main/FontVault/Services/DuplicateScanner.swift
+https://raw.githubusercontent.com/andrewsipe/FontVault/main/FontVault/Services/ExcludeFromIndexAlert.swift
+https://raw.githubusercontent.com/andrewsipe/FontVault/main/FontVault/Services/FontExportPanel.swift
+https://raw.githubusercontent.com/andrewsipe/FontVault/main/FontVault/Services/FontImportPanel.swift
+https://raw.githubusercontent.com/andrewsipe/FontVault/main/FontVault/Services/FontMetadataReader.swift
+https://raw.githubusercontent.com/andrewsipe/FontVault/main/FontVault/Services/FontMetadataValidator.swift
+https://raw.githubusercontent.com/andrewsipe/FontVault/main/FontVault/Services/FontTableBinaryReader.swift
+https://raw.githubusercontent.com/andrewsipe/FontVault/main/FontVault/Services/FontVaultDragTypes.swift
+https://raw.githubusercontent.com/andrewsipe/FontVault/main/FontVault/Services/FontVendorRegistry.swift
+https://raw.githubusercontent.com/andrewsipe/FontVault/main/FontVault/Services/ImportDateDisplay.swift
+https://raw.githubusercontent.com/andrewsipe/FontVault/main/FontVault/Services/ImportIssueReviewExporter.swift
+https://raw.githubusercontent.com/andrewsipe/FontVault/main/FontVault/Services/ImportStaging.swift
+https://raw.githubusercontent.com/andrewsipe/FontVault/main/FontVault/Services/LayoutEngine.swift
+https://raw.githubusercontent.com/andrewsipe/FontVault/main/FontVault/Services/VaultCoordinator.swift
+https://raw.githubusercontent.com/andrewsipe/FontVault/main/FontVault/Services/VaultMaintenance.swift
+https://raw.githubusercontent.com/andrewsipe/FontVault/main/FontVault/Services/VaultSettings.swift
+
+# FontVault/Views/
+https://raw.githubusercontent.com/andrewsipe/FontVault/main/FontVault/Views/DuplicatesView.swift
+https://raw.githubusercontent.com/andrewsipe/FontVault/main/FontVault/Views/FontDropTarget.swift
+https://raw.githubusercontent.com/andrewsipe/FontVault/main/FontVault/Views/FontExportDragBadge.swift
+https://raw.githubusercontent.com/andrewsipe/FontVault/main/FontVault/Views/FontInspectorModalView.swift
+https://raw.githubusercontent.com/andrewsipe/FontVault/main/FontVault/Views/FontInspectorWindowController.swift
+https://raw.githubusercontent.com/andrewsipe/FontVault/main/FontVault/Views/FontListContextMenuBuilder.swift
+https://raw.githubusercontent.com/andrewsipe/FontVault/main/FontVault/Views/FontListOutlineCells.swift
+https://raw.githubusercontent.com/andrewsipe/FontVault/main/FontVault/Views/FontListOutlineCoordinator.swift
+https://raw.githubusercontent.com/andrewsipe/FontVault/main/FontVault/Views/FontListOutlineHeaderCell.swift
+https://raw.githubusercontent.com/andrewsipe/FontVault/main/FontVault/Views/FontListOutlineHost.swift
+https://raw.githubusercontent.com/andrewsipe/FontVault/main/FontVault/Views/FontListView.swift
+https://raw.githubusercontent.com/andrewsipe/FontVault/main/FontVault/Views/FontVaultFormatBadge.swift
+https://raw.githubusercontent.com/andrewsipe/FontVault/main/FontVault/Views/ImportCompletionSummaryView.swift
+https://raw.githubusercontent.com/andrewsipe/FontVault/main/FontVault/Views/ImportProgressSheet.swift
+https://raw.githubusercontent.com/andrewsipe/FontVault/main/FontVault/Views/ImportProgressSheetHost.swift
+https://raw.githubusercontent.com/andrewsipe/FontVault/main/FontVault/Views/ImportReportSheet.swift
+https://raw.githubusercontent.com/andrewsipe/FontVault/main/FontVault/Views/InspectorView.swift
+https://raw.githubusercontent.com/andrewsipe/FontVault/main/FontVault/Views/LaunchProgressView.swift
+https://raw.githubusercontent.com/andrewsipe/FontVault/main/FontVault/Views/MainWindowView.swift
+https://raw.githubusercontent.com/andrewsipe/FontVault/main/FontVault/Views/OnboardingView.swift
+https://raw.githubusercontent.com/andrewsipe/FontVault/main/FontVault/Views/RootView.swift
+https://raw.githubusercontent.com/andrewsipe/FontVault/main/FontVault/Views/SettingsView.swift
+https://raw.githubusercontent.com/andrewsipe/FontVault/main/FontVault/Views/SidebarView.swift
+
+# FontVaultTests/
+https://raw.githubusercontent.com/andrewsipe/FontVault/main/FontVaultTests/CatalogBrowseTests.swift
+https://raw.githubusercontent.com/andrewsipe/FontVault/main/FontVaultTests/DragExportStagingTests.swift
+https://raw.githubusercontent.com/andrewsipe/FontVault/main/FontVaultTests/DuplicateScannerTests.swift
+https://raw.githubusercontent.com/andrewsipe/FontVault/main/FontVaultTests/FontDisplayNamesTests.swift
+https://raw.githubusercontent.com/andrewsipe/FontVault/main/FontVaultTests/FontListContextMenuBuilderTests.swift
+https://raw.githubusercontent.com/andrewsipe/FontVault/main/FontVaultTests/FontListContextMenuContextTests.swift
+https://raw.githubusercontent.com/andrewsipe/FontVault/main/FontVaultTests/FontListGroupingTests.swift
+https://raw.githubusercontent.com/andrewsipe/FontVault/main/FontVaultTests/FontMetadataReaderTests.swift
+https://raw.githubusercontent.com/andrewsipe/FontVault/main/FontVaultTests/FontMetadataValidatorTests.swift
+https://raw.githubusercontent.com/andrewsipe/FontVault/main/FontVaultTests/FontNameTableReaderTests.swift
+https://raw.githubusercontent.com/andrewsipe/FontVault/main/FontVaultTests/FontTableBinaryReaderTests.swift
+https://raw.githubusercontent.com/andrewsipe/FontVault/main/FontVaultTests/ImportDateDisplayTests.swift
+https://raw.githubusercontent.com/andrewsipe/FontVault/main/FontVaultTests/ImportFormatOptionsTests.swift
+https://raw.githubusercontent.com/andrewsipe/FontVault/main/FontVaultTests/ImportIssueReviewExporterTests.swift
+https://raw.githubusercontent.com/andrewsipe/FontVault/main/FontVaultTests/ImportReportTests.swift
+https://raw.githubusercontent.com/andrewsipe/FontVault/main/FontVaultTests/LayoutEngineTests.swift
+https://raw.githubusercontent.com/andrewsipe/FontVault/main/FontVaultTests/ListStatusDetailTests.swift
+https://raw.githubusercontent.com/andrewsipe/FontVault/main/FontVaultTests/StatusBarCopyTests.swift
