@@ -1,0 +1,16 @@
+# Xcode
+DerivedData/
+*.xcuserstate
+xcuserdata/
+build/
+
+# macOS
+.DS_Store
+
+# Reference copy of FEX (large, not part of the app)
+FontExplorer X Pro.app/
+
+# App support (local dev databases)
+*.db
+*.db-shm
+*.db-wal

@@ -1,0 +1,873 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 77;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		B1000001 /* FontVaultApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1000001 /* FontVaultApp.swift */; };
+		B1000002 /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1000002 /* AppState.swift */; };
+		B1000004 /* FontRecord.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1000004 /* FontRecord.swift */; };
+		B1000005 /* VaultSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1000005 /* VaultSettings.swift */; };
+		B1000006 /* LayoutEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1000006 /* LayoutEngine.swift */; };
+		B1000007 /* FontMetadataReader.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1000007 /* FontMetadataReader.swift */; };
+		B1000008 /* CatalogStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1000008 /* CatalogStore.swift */; };
+		B1000009 /* VaultCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1000009 /* VaultCoordinator.swift */; };
+		B100000A /* RootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F100000A /* RootView.swift */; };
+		B100000B /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F100000B /* OnboardingView.swift */; };
+		B100000C /* MainWindowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F100000C /* MainWindowView.swift */; };
+		B100000E /* SidebarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F100000E /* SidebarView.swift */; };
+		B100000F /* FontListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F100000F /* FontListView.swift */; };
+		B1000010 /* InspectorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1000010 /* InspectorView.swift */; };
+		B1000011 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1000011 /* SettingsView.swift */; };
+		B1000012 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F1000012 /* Assets.xcassets */; };
+		B1000013 /* ImportFormatOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1000014 /* ImportFormatOptions.swift */; };
+		B1000014 /* FontImportPanel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1000015 /* FontImportPanel.swift */; };
+		B1000015 /* FontDropTarget.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1000016 /* FontDropTarget.swift */; };
+		B1000016 /* VaultMaintenance.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1000017 /* VaultMaintenance.swift */; };
+		B1000017 /* FontExportPanel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1000018 /* FontExportPanel.swift */; };
+		B1000019 /* FontExportDragBadge.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1000022 /* FontExportDragBadge.swift */; };
+		B1000020 /* LayoutEngineTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1000020 /* LayoutEngineTests.swift */; };
+		B1000021 /* FontVaultDragTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1000021 /* FontVaultDragTypes.swift */; };
+		B1000023 /* FontListGrouping.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1000023 /* FontListGrouping.swift */; };
+		B1000024 /* FontListGroupingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1000024 /* FontListGroupingTests.swift */; };
+		B1000025 /* ImportDateDisplay.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1000025 /* ImportDateDisplay.swift */; };
+		B1000026 /* DuplicateGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1000026 /* DuplicateGroup.swift */; };
+		B1000027 /* DuplicateScanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1000027 /* DuplicateScanner.swift */; };
+		B1000028 /* DuplicatesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1000028 /* DuplicatesView.swift */; };
+		B1000029 /* ImportDateDisplayTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1000029 /* ImportDateDisplayTests.swift */; };
+		B100002A /* DuplicateScannerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F100002A /* DuplicateScannerTests.swift */; };
+		B100002B /* DragExportStaging.swift in Sources */ = {isa = PBXBuildFile; fileRef = F100002B /* DragExportStaging.swift */; };
+		B100002C /* DragExportStagingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F100002C /* DragExportStagingTests.swift */; };
+		B100002D /* ExportLayoutMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = F100002D /* ExportLayoutMode.swift */; };
+		B100002E /* OpenTypeNameIDs.swift in Sources */ = {isa = PBXBuildFile; fileRef = F100002E /* OpenTypeNameIDs.swift */; };
+		B100002F /* FontMetadataReaderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F100002F /* FontMetadataReaderTests.swift */; };
+		B1000030 /* GRDB in Frameworks */ = {isa = PBXBuildFile; productRef = P1000001 /* GRDB */; };
+		B1000031 /* FontListColumn.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1000031 /* FontListColumn.swift */; };
+		B1000032 /* InspectorFieldPreference.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1000032 /* InspectorFieldPreference.swift */; };
+		B1000034 /* FontNameTableReaderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1000034 /* FontNameTableReaderTests.swift */; };
+		B1000039 /* SettingsTab.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1000039 /* SettingsTab.swift */; };
+		B100003A /* FontListOutlineItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = F100003A /* FontListOutlineItem.swift */; };
+		B100003B /* FontListOutlineCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = F100003B /* FontListOutlineCoordinator.swift */; };
+		B100003C /* FontListOutlineHost.swift in Sources */ = {isa = PBXBuildFile; fileRef = F100003C /* FontListOutlineHost.swift */; };
+		B100003D /* FontListOutlineCells.swift in Sources */ = {isa = PBXBuildFile; fileRef = F100003D /* FontListOutlineCells.swift */; };
+		B100003E /* FontListOutlineHeaderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F100003E /* FontListOutlineHeaderCell.swift */; };
+		B100003F /* FontVaultFormatBadge.swift in Sources */ = {isa = PBXBuildFile; fileRef = F100003F /* FontVaultFormatBadge.swift */; };
+		B1000040 /* FontFamilySummary.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1000040 /* FontFamilySummary.swift */; };
+		B1000041 /* CatalogBrowseSQL.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1000041 /* CatalogBrowseSQL.swift */; };
+		B1000042 /* CatalogBrowseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1000042 /* CatalogBrowseTests.swift */; };
+		B1000043 /* ImportProgressState.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1000043 /* ImportProgressState.swift */; };
+		B1000044 /* ImportProgressSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1000044 /* ImportProgressSheet.swift */; };
+		B1000045 /* ImportProgressSheetHost.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1000045 /* ImportProgressSheetHost.swift */; };
+		B1000046 /* ListSelectionDisplay.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1000046 /* ListSelectionDisplay.swift */; };
+		B1000047 /* ImportStaging.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1000047 /* ImportStaging.swift */; };
+		B1000048 /* DesignMetrics.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1000048 /* DesignMetrics.swift */; };
+		B1000049 /* SidebarItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1000049 /* SidebarItem.swift */; };
+		B100004A /* SheetActionButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F100004A /* SheetActionButton.swift */; };
+		B100004B /* LaunchPhase.swift in Sources */ = {isa = PBXBuildFile; fileRef = F100004B /* LaunchPhase.swift */; };
+		B100004C /* LaunchProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F100004C /* LaunchProgressView.swift */; };
+		B100004D /* FontListRowDensity.swift in Sources */ = {isa = PBXBuildFile; fileRef = F100004D /* FontListRowDensity.swift */; };
+		B100004E /* FontFamilyUniformValues.swift in Sources */ = {isa = PBXBuildFile; fileRef = F100004E /* FontFamilyUniformValues.swift */; };
+		B100004F /* FontVendorRegistry.swift in Sources */ = {isa = PBXBuildFile; fileRef = F100004F /* FontVendorRegistry.swift */; };
+		B1000050 /* FontVendorRegistry.json in Resources */ = {isa = PBXBuildFile; fileRef = F1000050 /* FontVendorRegistry.json */; };
+		B1000051 /* AppMenuCopy.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1000051 /* AppMenuCopy.swift */; };
+		B1000052 /* CatalogOptimizationPolicy.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1000052 /* CatalogOptimizationPolicy.swift */; };
+		B1000053 /* VaultOrganizationHelp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1000053 /* VaultOrganizationHelp.swift */; };
+		B1000056 /* FontTableBrowseScope.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1000056 /* FontTableBrowseScope.swift */; };
+		B1000057 /* ExcludeFromIndexAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1000057 /* ExcludeFromIndexAlert.swift */; };
+		B1000058 /* FontExtractedDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1000058 /* FontExtractedDetails.swift */; };
+		B1000059 /* FontTableBinaryReader.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1000059 /* FontTableBinaryReader.swift */; };
+		B100005A /* FontTableBinaryReaderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F100005A /* FontTableBinaryReaderTests.swift */; };
+		B100005B /* FontSidebarFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F100005B /* FontSidebarFilter.swift */; };
+		B100005C /* FontInspectorModalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F100005C /* FontInspectorModalView.swift */; };
+		B100005D /* FontFamilyFieldState.swift in Sources */ = {isa = PBXBuildFile; fileRef = F100005D /* FontFamilyFieldState.swift */; };
+		B100005E /* MetadataIssue.swift in Sources */ = {isa = PBXBuildFile; fileRef = F100005E /* MetadataIssue.swift */; };
+		B100005F /* FontListCellPresentation.swift in Sources */ = {isa = PBXBuildFile; fileRef = F100005F /* FontListCellPresentation.swift */; };
+		B1000060 /* FontMetadataValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1000060 /* FontMetadataValidator.swift */; };
+		B1000061 /* FontMetadataIssues+Database.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1000061 /* FontMetadataIssues+Database.swift */; };
+		B1000062 /* FontMetadataValidatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1000062 /* FontMetadataValidatorTests.swift */; };
+		B1000063 /* FontInspectorWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1000063 /* FontInspectorWindowController.swift */; };
+		B1000064 /* FontDisplayNames.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1000064 /* FontDisplayNames.swift */; };
+		B1000065 /* FontDisplayNamesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1000065 /* FontDisplayNamesTests.swift */; };
+		B1000066 /* ListStatusDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1000066 /* ListStatusDetail.swift */; };
+		B1000067 /* FontListContextMenuContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1000067 /* FontListContextMenuContext.swift */; };
+		B1000068 /* FontListContextMenuBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1000068 /* FontListContextMenuBuilder.swift */; };
+		B1000069 /* FontListURLParsing.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1000069 /* FontListURLParsing.swift */; };
+		B100006A /* FontListContextMenuActionKind.swift in Sources */ = {isa = PBXBuildFile; fileRef = F100006A /* FontListContextMenuActionKind.swift */; };
+		B100006B /* FontListContextMenuContextTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F100006B /* FontListContextMenuContextTests.swift */; };
+		B100006C /* ImportFormatOptionsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F100006C /* ImportFormatOptionsTests.swift */; };
+		B100006D /* FontListContextMenuBuilderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F100006D /* FontListContextMenuBuilderTests.swift */; };
+		B1000070 /* StatusBarCopy.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1000070 /* StatusBarCopy.swift */; };
+		B1000071 /* ListStatusDetailTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1000071 /* ListStatusDetailTests.swift */; };
+		B1000072 /* StatusBarCopyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1000072 /* StatusBarCopyTests.swift */; };
+		B1000073 /* ImportReport.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1000073 /* ImportReport.swift */; };
+		B1000074 /* ImportReportSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1000074 /* ImportReportSheet.swift */; };
+		B1000075 /* ImportReportTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1000075 /* ImportReportTests.swift */; };
+		B1000076 /* ImportCompletionSummaryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1000076 /* ImportCompletionSummaryView.swift */; };
+		B1000077 /* ImportIssueReviewExporter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1000077 /* ImportIssueReviewExporter.swift */; };
+		B1000078 /* ImportIssueReviewExporterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1000078 /* ImportIssueReviewExporterTests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		XP100001 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = PR100001 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = T1000001;
+			remoteInfo = FontVault;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		E1000001 /* FontVault.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FontVault.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		E1000002 /* FontVaultTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FontVaultTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		F1000001 /* FontVaultApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontVaultApp.swift; sourceTree = "<group>"; };
+		F1000002 /* AppState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppState.swift; sourceTree = "<group>"; };
+		F1000004 /* FontRecord.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontRecord.swift; sourceTree = "<group>"; };
+		F1000005 /* VaultSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VaultSettings.swift; sourceTree = "<group>"; };
+		F1000006 /* LayoutEngine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LayoutEngine.swift; sourceTree = "<group>"; };
+		F1000007 /* FontMetadataReader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontMetadataReader.swift; sourceTree = "<group>"; };
+		F1000008 /* CatalogStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatalogStore.swift; sourceTree = "<group>"; };
+		F1000009 /* VaultCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VaultCoordinator.swift; sourceTree = "<group>"; };
+		F100000A /* RootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootView.swift; sourceTree = "<group>"; };
+		F100000B /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
+		F100000C /* MainWindowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainWindowView.swift; sourceTree = "<group>"; };
+		F100000E /* SidebarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SidebarView.swift; sourceTree = "<group>"; };
+		F100000F /* FontListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontListView.swift; sourceTree = "<group>"; };
+		F1000010 /* InspectorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InspectorView.swift; sourceTree = "<group>"; };
+		F1000011 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		F1000012 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		F1000013 /* FontVault.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = FontVault.entitlements; sourceTree = "<group>"; };
+		F1000014 /* ImportFormatOptions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImportFormatOptions.swift; sourceTree = "<group>"; };
+		F1000015 /* FontImportPanel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontImportPanel.swift; sourceTree = "<group>"; };
+		F1000016 /* FontDropTarget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontDropTarget.swift; sourceTree = "<group>"; };
+		F1000017 /* VaultMaintenance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VaultMaintenance.swift; sourceTree = "<group>"; };
+		F1000018 /* FontExportPanel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontExportPanel.swift; sourceTree = "<group>"; };
+		F1000020 /* LayoutEngineTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LayoutEngineTests.swift; sourceTree = "<group>"; };
+		F1000021 /* FontVaultDragTypes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontVaultDragTypes.swift; sourceTree = "<group>"; };
+		F1000022 /* FontExportDragBadge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontExportDragBadge.swift; sourceTree = "<group>"; };
+		F1000023 /* FontListGrouping.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontListGrouping.swift; sourceTree = "<group>"; };
+		F1000024 /* FontListGroupingTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontListGroupingTests.swift; sourceTree = "<group>"; };
+		F1000025 /* ImportDateDisplay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImportDateDisplay.swift; sourceTree = "<group>"; };
+		F1000026 /* DuplicateGroup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DuplicateGroup.swift; sourceTree = "<group>"; };
+		F1000027 /* DuplicateScanner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DuplicateScanner.swift; sourceTree = "<group>"; };
+		F1000028 /* DuplicatesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DuplicatesView.swift; sourceTree = "<group>"; };
+		F1000029 /* ImportDateDisplayTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImportDateDisplayTests.swift; sourceTree = "<group>"; };
+		F100002A /* DuplicateScannerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DuplicateScannerTests.swift; sourceTree = "<group>"; };
+		F100002B /* DragExportStaging.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DragExportStaging.swift; sourceTree = "<group>"; };
+		F100002C /* DragExportStagingTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DragExportStagingTests.swift; sourceTree = "<group>"; };
+		F100002D /* ExportLayoutMode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExportLayoutMode.swift; sourceTree = "<group>"; };
+		F100002E /* OpenTypeNameIDs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenTypeNameIDs.swift; sourceTree = "<group>"; };
+		F100002F /* FontMetadataReaderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontMetadataReaderTests.swift; sourceTree = "<group>"; };
+		F1000031 /* FontListColumn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontListColumn.swift; sourceTree = "<group>"; };
+		F1000032 /* InspectorFieldPreference.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InspectorFieldPreference.swift; sourceTree = "<group>"; };
+		F1000034 /* FontNameTableReaderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontNameTableReaderTests.swift; sourceTree = "<group>"; };
+		F1000039 /* SettingsTab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTab.swift; sourceTree = "<group>"; };
+		F100003A /* FontListOutlineItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontListOutlineItem.swift; sourceTree = "<group>"; };
+		F100003B /* FontListOutlineCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontListOutlineCoordinator.swift; sourceTree = "<group>"; };
+		F100003C /* FontListOutlineHost.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontListOutlineHost.swift; sourceTree = "<group>"; };
+		F100003D /* FontListOutlineCells.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontListOutlineCells.swift; sourceTree = "<group>"; };
+		F100003E /* FontListOutlineHeaderCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontListOutlineHeaderCell.swift; sourceTree = "<group>"; };
+		F100003F /* FontVaultFormatBadge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontVaultFormatBadge.swift; sourceTree = "<group>"; };
+		F1000040 /* FontFamilySummary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontFamilySummary.swift; sourceTree = "<group>"; };
+		F1000041 /* CatalogBrowseSQL.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatalogBrowseSQL.swift; sourceTree = "<group>"; };
+		F1000042 /* CatalogBrowseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatalogBrowseTests.swift; sourceTree = "<group>"; };
+		F1000043 /* ImportProgressState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImportProgressState.swift; sourceTree = "<group>"; };
+		F1000044 /* ImportProgressSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImportProgressSheet.swift; sourceTree = "<group>"; };
+		F1000045 /* ImportProgressSheetHost.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImportProgressSheetHost.swift; sourceTree = "<group>"; };
+		F1000046 /* ListSelectionDisplay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListSelectionDisplay.swift; sourceTree = "<group>"; };
+		F1000047 /* ImportStaging.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImportStaging.swift; sourceTree = "<group>"; };
+		F1000048 /* DesignMetrics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DesignMetrics.swift; sourceTree = "<group>"; };
+		F1000049 /* SidebarItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SidebarItem.swift; sourceTree = "<group>"; };
+		F100004A /* SheetActionButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SheetActionButton.swift; sourceTree = "<group>"; };
+		F100004B /* LaunchPhase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchPhase.swift; sourceTree = "<group>"; };
+		F100004C /* LaunchProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchProgressView.swift; sourceTree = "<group>"; };
+		F100004D /* FontListRowDensity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontListRowDensity.swift; sourceTree = "<group>"; };
+		F100004E /* FontFamilyUniformValues.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontFamilyUniformValues.swift; sourceTree = "<group>"; };
+		F100004F /* FontVendorRegistry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontVendorRegistry.swift; sourceTree = "<group>"; };
+		F1000050 /* FontVendorRegistry.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = FontVendorRegistry.json; sourceTree = "<group>"; };
+		F1000051 /* AppMenuCopy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppMenuCopy.swift; sourceTree = "<group>"; };
+		F1000052 /* CatalogOptimizationPolicy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatalogOptimizationPolicy.swift; sourceTree = "<group>"; };
+		F1000053 /* VaultOrganizationHelp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VaultOrganizationHelp.swift; sourceTree = "<group>"; };
+		F1000056 /* FontTableBrowseScope.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontTableBrowseScope.swift; sourceTree = "<group>"; };
+		F1000057 /* ExcludeFromIndexAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExcludeFromIndexAlert.swift; sourceTree = "<group>"; };
+		F1000058 /* FontExtractedDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontExtractedDetails.swift; sourceTree = "<group>"; };
+		F1000059 /* FontTableBinaryReader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontTableBinaryReader.swift; sourceTree = "<group>"; };
+		F100005A /* FontTableBinaryReaderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontTableBinaryReaderTests.swift; sourceTree = "<group>"; };
+		F100005B /* FontSidebarFilter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontSidebarFilter.swift; sourceTree = "<group>"; };
+		F100005C /* FontInspectorModalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontInspectorModalView.swift; sourceTree = "<group>"; };
+		F100005D /* FontFamilyFieldState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontFamilyFieldState.swift; sourceTree = "<group>"; };
+		F100005E /* MetadataIssue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MetadataIssue.swift; sourceTree = "<group>"; };
+		F100005F /* FontListCellPresentation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontListCellPresentation.swift; sourceTree = "<group>"; };
+		F1000060 /* FontMetadataValidator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontMetadataValidator.swift; sourceTree = "<group>"; };
+		F1000061 /* FontMetadataIssues+Database.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FontMetadataIssues+Database.swift"; sourceTree = "<group>"; };
+		F1000062 /* FontMetadataValidatorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontMetadataValidatorTests.swift; sourceTree = "<group>"; };
+		F1000063 /* FontInspectorWindowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontInspectorWindowController.swift; sourceTree = "<group>"; };
+		F1000064 /* FontDisplayNames.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontDisplayNames.swift; sourceTree = "<group>"; };
+		F1000065 /* FontDisplayNamesTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontDisplayNamesTests.swift; sourceTree = "<group>"; };
+		F1000066 /* ListStatusDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListStatusDetail.swift; sourceTree = "<group>"; };
+		F1000067 /* FontListContextMenuContext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontListContextMenuContext.swift; sourceTree = "<group>"; };
+		F1000068 /* FontListContextMenuBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontListContextMenuBuilder.swift; sourceTree = "<group>"; };
+		F1000069 /* FontListURLParsing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontListURLParsing.swift; sourceTree = "<group>"; };
+		F100006A /* FontListContextMenuActionKind.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontListContextMenuActionKind.swift; sourceTree = "<group>"; };
+		F100006B /* FontListContextMenuContextTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontListContextMenuContextTests.swift; sourceTree = "<group>"; };
+		F100006C /* ImportFormatOptionsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImportFormatOptionsTests.swift; sourceTree = "<group>"; };
+		F100006D /* FontListContextMenuBuilderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontListContextMenuBuilderTests.swift; sourceTree = "<group>"; };
+		F1000070 /* StatusBarCopy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusBarCopy.swift; sourceTree = "<group>"; };
+		F1000071 /* ListStatusDetailTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListStatusDetailTests.swift; sourceTree = "<group>"; };
+		F1000072 /* StatusBarCopyTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusBarCopyTests.swift; sourceTree = "<group>"; };
+		F1000073 /* ImportReport.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImportReport.swift; sourceTree = "<group>"; };
+		F1000074 /* ImportReportSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImportReportSheet.swift; sourceTree = "<group>"; };
+		F1000075 /* ImportReportTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImportReportTests.swift; sourceTree = "<group>"; };
+		F1000076 /* ImportCompletionSummaryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImportCompletionSummaryView.swift; sourceTree = "<group>"; };
+		F1000077 /* ImportIssueReviewExporter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImportIssueReviewExporter.swift; sourceTree = "<group>"; };
+		F1000078 /* ImportIssueReviewExporterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImportIssueReviewExporterTests.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		C1000001 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B1000030 /* GRDB in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C1000002 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		G1000001 = {
+			isa = PBXGroup;
+			children = (
+				G1000002 /* FontVault */,
+				G1000003 /* FontVaultTests */,
+				G1000004 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		G1000002 /* FontVault */ = {
+			isa = PBXGroup;
+			children = (
+				F1000001 /* FontVaultApp.swift */,
+				F1000002 /* AppState.swift */,
+				F1000046 /* ListSelectionDisplay.swift */,
+				G1000008 /* Design */,
+				G1000005 /* Models */,
+				G1000006 /* Services */,
+				G1000007 /* Views */,
+				F1000012 /* Assets.xcassets */,
+				F1000013 /* FontVault.entitlements */,
+				G1000009 /* Resources */,
+			);
+			path = FontVault;
+			sourceTree = "<group>";
+		};
+		G1000003 /* FontVaultTests */ = {
+			isa = PBXGroup;
+			children = (
+				F1000020 /* LayoutEngineTests.swift */,
+				F1000024 /* FontListGroupingTests.swift */,
+				F1000042 /* CatalogBrowseTests.swift */,
+				F1000029 /* ImportDateDisplayTests.swift */,
+				F100002A /* DuplicateScannerTests.swift */,
+				F100002C /* DragExportStagingTests.swift */,
+				F100002F /* FontMetadataReaderTests.swift */,
+				F1000062 /* FontMetadataValidatorTests.swift */,
+				F1000065 /* FontDisplayNamesTests.swift */,
+				F100006B /* FontListContextMenuContextTests.swift */,
+				F100006C /* ImportFormatOptionsTests.swift */,
+				F100006D /* FontListContextMenuBuilderTests.swift */,
+				F1000071 /* ListStatusDetailTests.swift */,
+				F1000072 /* StatusBarCopyTests.swift */,
+				F1000075 /* ImportReportTests.swift */,
+				F1000078 /* ImportIssueReviewExporterTests.swift */,
+				F1000034 /* FontNameTableReaderTests.swift */,
+				F100005A /* FontTableBinaryReaderTests.swift */,
+			);
+			path = FontVaultTests;
+			sourceTree = "<group>";
+		};
+		G1000004 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				E1000001 /* FontVault.app */,
+				E1000002 /* FontVaultTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		G1000005 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				F1000049 /* SidebarItem.swift */,
+				F1000004 /* FontRecord.swift */,
+				F1000058 /* FontExtractedDetails.swift */,
+				F1000023 /* FontListGrouping.swift */,
+				F1000040 /* FontFamilySummary.swift */,
+				F1000026 /* DuplicateGroup.swift */,
+				F100002D /* ExportLayoutMode.swift */,
+				F1000053 /* VaultOrganizationHelp.swift */,
+				F1000056 /* FontTableBrowseScope.swift */,
+				F100005B /* FontSidebarFilter.swift */,
+				F100002E /* OpenTypeNameIDs.swift */,
+				F1000031 /* FontListColumn.swift */,
+				F1000032 /* InspectorFieldPreference.swift */,
+				F1000039 /* SettingsTab.swift */,
+				F1000051 /* AppMenuCopy.swift */,
+				F100003A /* FontListOutlineItem.swift */,
+				F1000014 /* ImportFormatOptions.swift */,
+				F1000043 /* ImportProgressState.swift */,
+				F100004B /* LaunchPhase.swift */,
+				F100004D /* FontListRowDensity.swift */,
+				F100004E /* FontFamilyUniformValues.swift */,
+				F100005D /* FontFamilyFieldState.swift */,
+				F100005E /* MetadataIssue.swift */,
+				F100005F /* FontListCellPresentation.swift */,
+				F1000061 /* FontMetadataIssues+Database.swift */,
+				F1000064 /* FontDisplayNames.swift */,
+				F1000066 /* ListStatusDetail.swift */,
+				F1000070 /* StatusBarCopy.swift */,
+				F1000073 /* ImportReport.swift */,
+				F1000067 /* FontListContextMenuContext.swift */,
+				F1000069 /* FontListURLParsing.swift */,
+				F100006A /* FontListContextMenuActionKind.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		G1000006 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				F1000005 /* VaultSettings.swift */,
+				F1000006 /* LayoutEngine.swift */,
+				F1000007 /* FontMetadataReader.swift */,
+				F1000060 /* FontMetadataValidator.swift */,
+				F1000059 /* FontTableBinaryReader.swift */,
+				F100004F /* FontVendorRegistry.swift */,
+				F1000008 /* CatalogStore.swift */,
+				F1000052 /* CatalogOptimizationPolicy.swift */,
+				F1000057 /* ExcludeFromIndexAlert.swift */,
+				F1000041 /* CatalogBrowseSQL.swift */,
+				F1000047 /* ImportStaging.swift */,
+				F1000009 /* VaultCoordinator.swift */,
+				F1000015 /* FontImportPanel.swift */,
+				F1000017 /* VaultMaintenance.swift */,
+				F1000018 /* FontExportPanel.swift */,
+				F1000021 /* FontVaultDragTypes.swift */,
+				F1000025 /* ImportDateDisplay.swift */,
+				F1000027 /* DuplicateScanner.swift */,
+				F100002B /* DragExportStaging.swift */,
+				F1000077 /* ImportIssueReviewExporter.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		G1000007 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				F100000A /* RootView.swift */,
+				F100000B /* OnboardingView.swift */,
+				F100000C /* MainWindowView.swift */,
+				F100000E /* SidebarView.swift */,
+				F100000F /* FontListView.swift */,
+				F100003B /* FontListOutlineCoordinator.swift */,
+				F1000068 /* FontListContextMenuBuilder.swift */,
+				F100003C /* FontListOutlineHost.swift */,
+				F100003D /* FontListOutlineCells.swift */,
+				F100003E /* FontListOutlineHeaderCell.swift */,
+				F100003F /* FontVaultFormatBadge.swift */,
+				F1000022 /* FontExportDragBadge.swift */,
+				F1000010 /* InspectorView.swift */,
+				F100005C /* FontInspectorModalView.swift */,
+				F1000063 /* FontInspectorWindowController.swift */,
+				F1000011 /* SettingsView.swift */,
+				F1000016 /* FontDropTarget.swift */,
+				F1000028 /* DuplicatesView.swift */,
+				F1000044 /* ImportProgressSheet.swift */,
+				F1000045 /* ImportProgressSheetHost.swift */,
+				F1000074 /* ImportReportSheet.swift */,
+				F1000076 /* ImportCompletionSummaryView.swift */,
+				F100004C /* LaunchProgressView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		G1000008 /* Design */ = {
+			isa = PBXGroup;
+			children = (
+				F1000048 /* DesignMetrics.swift */,
+				F100004A /* SheetActionButton.swift */,
+			);
+			path = Design;
+			sourceTree = "<group>";
+		};
+		G1000009 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				F1000050 /* FontVendorRegistry.json */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		T1000001 /* FontVault */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = X1000003 /* Build configuration list for PBXNativeTarget "FontVault" */;
+			buildPhases = (
+				S1000001 /* Sources */,
+				C1000001 /* Frameworks */,
+				R1000001 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = FontVault;
+			packageProductDependencies = (
+				P1000001 /* GRDB */,
+			);
+			productName = FontVault;
+			productReference = E1000001 /* FontVault.app */;
+			productType = "com.apple.product-type.application";
+		};
+		T1000002 /* FontVaultTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = X1000004 /* Build configuration list for PBXNativeTarget "FontVaultTests" */;
+			buildPhases = (
+				S1000002 /* Sources */,
+				C1000002 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				D1000001 /* PBXTargetDependency */,
+			);
+			name = FontVaultTests;
+			productName = FontVaultTests;
+			productReference = E1000002 /* FontVaultTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		PR100001 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1500;
+				LastUpgradeCheck = 2630;
+				TargetAttributes = {
+					T1000001 = {
+						CreatedOnToolsVersion = 15.0;
+					};
+					T1000002 = {
+						CreatedOnToolsVersion = 15.0;
+						TestTargetID = T1000001;
+					};
+				};
+			};
+			buildConfigurationList = X1000001 /* Build configuration list for PBXProject "FontVault" */;
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = G1000001;
+			packageReferences = (
+				PKG10001 /* XCRemoteSwiftPackageReference "GRDB.swift" */,
+			);
+			preferredProjectObjectVersion = 77;
+			productRefGroup = G1000004 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				T1000001 /* FontVault */,
+				T1000002 /* FontVaultTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		R1000001 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B1000012 /* Assets.xcassets in Resources */,
+				B1000050 /* FontVendorRegistry.json in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		S1000001 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B1000001 /* FontVaultApp.swift in Sources */,
+				B1000002 /* AppState.swift in Sources */,
+				B1000046 /* ListSelectionDisplay.swift in Sources */,
+				B1000048 /* DesignMetrics.swift in Sources */,
+				B100004A /* SheetActionButton.swift in Sources */,
+				B100004B /* LaunchPhase.swift in Sources */,
+				B100004C /* LaunchProgressView.swift in Sources */,
+				B100004D /* FontListRowDensity.swift in Sources */,
+				B100004E /* FontFamilyUniformValues.swift in Sources */,
+				B100004F /* FontVendorRegistry.swift in Sources */,
+				B1000049 /* SidebarItem.swift in Sources */,
+				B1000004 /* FontRecord.swift in Sources */,
+				B1000058 /* FontExtractedDetails.swift in Sources */,
+				B1000023 /* FontListGrouping.swift in Sources */,
+				B1000040 /* FontFamilySummary.swift in Sources */,
+				B1000026 /* DuplicateGroup.swift in Sources */,
+				B100002D /* ExportLayoutMode.swift in Sources */,
+				B1000053 /* VaultOrganizationHelp.swift in Sources */,
+				B1000056 /* FontTableBrowseScope.swift in Sources */,
+				B100005B /* FontSidebarFilter.swift in Sources */,
+				B100002E /* OpenTypeNameIDs.swift in Sources */,
+				B1000031 /* FontListColumn.swift in Sources */,
+				B1000032 /* InspectorFieldPreference.swift in Sources */,
+				B1000025 /* ImportDateDisplay.swift in Sources */,
+				B1000027 /* DuplicateScanner.swift in Sources */,
+				B100002B /* DragExportStaging.swift in Sources */,
+				B1000005 /* VaultSettings.swift in Sources */,
+				B1000006 /* LayoutEngine.swift in Sources */,
+				B1000007 /* FontMetadataReader.swift in Sources */,
+				B1000059 /* FontTableBinaryReader.swift in Sources */,
+				B1000008 /* CatalogStore.swift in Sources */,
+				B1000052 /* CatalogOptimizationPolicy.swift in Sources */,
+				B1000057 /* ExcludeFromIndexAlert.swift in Sources */,
+				B1000041 /* CatalogBrowseSQL.swift in Sources */,
+				B1000043 /* ImportProgressState.swift in Sources */,
+				B1000044 /* ImportProgressSheet.swift in Sources */,
+				B1000045 /* ImportProgressSheetHost.swift in Sources */,
+				B1000073 /* ImportReport.swift in Sources */,
+				B1000074 /* ImportReportSheet.swift in Sources */,
+				B1000076 /* ImportCompletionSummaryView.swift in Sources */,
+				B1000077 /* ImportIssueReviewExporter.swift in Sources */,
+				B1000047 /* ImportStaging.swift in Sources */,
+				B1000009 /* VaultCoordinator.swift in Sources */,
+				B100000A /* RootView.swift in Sources */,
+				B100000B /* OnboardingView.swift in Sources */,
+				B100000C /* MainWindowView.swift in Sources */,
+				B100000E /* SidebarView.swift in Sources */,
+				B100000F /* FontListView.swift in Sources */,
+				B1000019 /* FontExportDragBadge.swift in Sources */,
+				B1000039 /* SettingsTab.swift in Sources */,
+				B1000051 /* AppMenuCopy.swift in Sources */,
+				B100003A /* FontListOutlineItem.swift in Sources */,
+				B100003B /* FontListOutlineCoordinator.swift in Sources */,
+				B100003C /* FontListOutlineHost.swift in Sources */,
+				B100003D /* FontListOutlineCells.swift in Sources */,
+				B100003E /* FontListOutlineHeaderCell.swift in Sources */,
+				B100003F /* FontVaultFormatBadge.swift in Sources */,
+				B1000010 /* InspectorView.swift in Sources */,
+				B100005C /* FontInspectorModalView.swift in Sources */,
+				B100005D /* FontFamilyFieldState.swift in Sources */,
+				B100005E /* MetadataIssue.swift in Sources */,
+				B100005F /* FontListCellPresentation.swift in Sources */,
+				B1000060 /* FontMetadataValidator.swift in Sources */,
+				B1000061 /* FontMetadataIssues+Database.swift in Sources */,
+				B1000063 /* FontInspectorWindowController.swift in Sources */,
+				B1000064 /* FontDisplayNames.swift in Sources */,
+				B1000066 /* ListStatusDetail.swift in Sources */,
+				B1000070 /* StatusBarCopy.swift in Sources */,
+				B1000067 /* FontListContextMenuContext.swift in Sources */,
+				B1000068 /* FontListContextMenuBuilder.swift in Sources */,
+				B1000069 /* FontListURLParsing.swift in Sources */,
+				B100006A /* FontListContextMenuActionKind.swift in Sources */,
+				B1000028 /* DuplicatesView.swift in Sources */,
+				B1000011 /* SettingsView.swift in Sources */,
+				B1000013 /* ImportFormatOptions.swift in Sources */,
+				B1000014 /* FontImportPanel.swift in Sources */,
+				B1000015 /* FontDropTarget.swift in Sources */,
+				B1000016 /* VaultMaintenance.swift in Sources */,
+				B1000017 /* FontExportPanel.swift in Sources */,
+				B1000021 /* FontVaultDragTypes.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		S1000002 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B1000020 /* LayoutEngineTests.swift in Sources */,
+				B1000024 /* FontListGroupingTests.swift in Sources */,
+				B1000042 /* CatalogBrowseTests.swift in Sources */,
+				B1000029 /* ImportDateDisplayTests.swift in Sources */,
+				B100002A /* DuplicateScannerTests.swift in Sources */,
+				B100002C /* DragExportStagingTests.swift in Sources */,
+				B100002F /* FontMetadataReaderTests.swift in Sources */,
+				B1000034 /* FontNameTableReaderTests.swift in Sources */,
+				B100005A /* FontTableBinaryReaderTests.swift in Sources */,
+				B1000062 /* FontMetadataValidatorTests.swift in Sources */,
+				B1000065 /* FontDisplayNamesTests.swift in Sources */,
+				B100006B /* FontListContextMenuContextTests.swift in Sources */,
+				B100006C /* ImportFormatOptionsTests.swift in Sources */,
+				B100006D /* FontListContextMenuBuilderTests.swift in Sources */,
+				B1000071 /* ListStatusDetailTests.swift in Sources */,
+				B1000072 /* StatusBarCopyTests.swift in Sources */,
+				B1000075 /* ImportReportTests.swift in Sources */,
+				B1000078 /* ImportIssueReviewExporterTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		D1000001 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = T1000001 /* FontVault */;
+			targetProxy = XP100001 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		XC100001 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEAD_CODE_STRIPPING = YES;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 14.4;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		XC100002 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEAD_CODE_STRIPPING = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 14.4;
+				SDKROOT = macosx;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+			};
+			name = Release;
+		};
+		XC100003 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = FontVault/FontVault.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEAD_CODE_STRIPPING = YES;
+				DEVELOPMENT_TEAM = "";
+				ENABLE_HARDENED_RUNTIME = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = "Font Vault";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
+				INFOPLIST_KEY_LSMinimumSystemVersion = 14.4;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MARKETING_VERSION = 0.1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.goodfontscripts.FontVault;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		XC100004 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = FontVault/FontVault.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEAD_CODE_STRIPPING = YES;
+				DEVELOPMENT_TEAM = "";
+				ENABLE_HARDENED_RUNTIME = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = "Font Vault";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
+				INFOPLIST_KEY_LSMinimumSystemVersion = 14.4;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MARKETING_VERSION = 0.1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.goodfontscripts.FontVault;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
+		XC100005 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEAD_CODE_STRIPPING = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 14.4;
+				PRODUCT_BUNDLE_IDENTIFIER = com.goodfontscripts.FontVaultTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/FontVault.app/Contents/MacOS/FontVault";
+			};
+			name = Debug;
+		};
+		XC100006 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEAD_CODE_STRIPPING = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 14.4;
+				PRODUCT_BUNDLE_IDENTIFIER = com.goodfontscripts.FontVaultTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/FontVault.app/Contents/MacOS/FontVault";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		X1000001 /* Build configuration list for PBXProject "FontVault" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				XC100001 /* Debug */,
+				XC100002 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		X1000003 /* Build configuration list for PBXNativeTarget "FontVault" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				XC100003 /* Debug */,
+				XC100004 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		X1000004 /* Build configuration list for PBXNativeTarget "FontVaultTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				XC100005 /* Debug */,
+				XC100006 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		PKG10001 /* XCRemoteSwiftPackageReference "GRDB.swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/groue/GRDB.swift.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 7.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		P1000001 /* GRDB */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = PKG10001 /* XCRemoteSwiftPackageReference "GRDB.swift" */;
+			productName = GRDB;
+		};
+/* End XCSwiftPackageProductDependency section */
+	};
+	rootObject = PR100001 /* Project object */;
+}
