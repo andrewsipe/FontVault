@@ -106,8 +106,6 @@
 		B1000074 /* ImportReportSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1000074 /* ImportReportSheet.swift */; };
 		B1000075 /* ImportReportTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1000075 /* ImportReportTests.swift */; };
 		B1000076 /* ImportCompletionSummaryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1000076 /* ImportCompletionSummaryView.swift */; };
-		B1000077 /* ImportIssueReviewExporter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1000077 /* ImportIssueReviewExporter.swift */; };
-		B1000078 /* ImportIssueReviewExporterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1000078 /* ImportIssueReviewExporterTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -222,8 +220,6 @@
 		F1000074 /* ImportReportSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImportReportSheet.swift; sourceTree = "<group>"; };
 		F1000075 /* ImportReportTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImportReportTests.swift; sourceTree = "<group>"; };
 		F1000076 /* ImportCompletionSummaryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImportCompletionSummaryView.swift; sourceTree = "<group>"; };
-		F1000077 /* ImportIssueReviewExporter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImportIssueReviewExporter.swift; sourceTree = "<group>"; };
-		F1000078 /* ImportIssueReviewExporterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImportIssueReviewExporterTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -289,7 +285,6 @@
 				F1000071 /* ListStatusDetailTests.swift */,
 				F1000072 /* StatusBarCopyTests.swift */,
 				F1000075 /* ImportReportTests.swift */,
-				F1000078 /* ImportIssueReviewExporterTests.swift */,
 				F1000034 /* FontNameTableReaderTests.swift */,
 				F100005A /* FontTableBinaryReaderTests.swift */,
 			);
@@ -366,7 +361,6 @@
 				F1000025 /* ImportDateDisplay.swift */,
 				F1000027 /* DuplicateScanner.swift */,
 				F100002B /* DragExportStaging.swift */,
-				F1000077 /* ImportIssueReviewExporter.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -556,7 +550,6 @@
 				B1000073 /* ImportReport.swift in Sources */,
 				B1000074 /* ImportReportSheet.swift in Sources */,
 				B1000076 /* ImportCompletionSummaryView.swift in Sources */,
-				B1000077 /* ImportIssueReviewExporter.swift in Sources */,
 				B1000047 /* ImportStaging.swift in Sources */,
 				B1000009 /* VaultCoordinator.swift in Sources */,
 				B100000A /* RootView.swift in Sources */,
@@ -620,7 +613,6 @@
 				B1000071 /* ListStatusDetailTests.swift in Sources */,
 				B1000072 /* StatusBarCopyTests.swift in Sources */,
 				B1000075 /* ImportReportTests.swift in Sources */,
-				B1000078 /* ImportIssueReviewExporterTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

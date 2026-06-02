@@ -109,11 +109,45 @@ final class ImportReportTests: XCTestCase {
         )
         let html = ImportReport.issueListHTML(from: report)
         XCTAssertTrue(html.contains("<!DOCTYPE html>"))
-        XCTAssertTrue(html.contains("Naming review"))
-        XCTAssertTrue(html.contains("Save Review Package"))
-        XCTAssertFalse(html.contains("href=\"file:///tmp/Bulk-Up"))
+        XCTAssertTrue(html.contains("Issues (1)"))
+        XCTAssertTrue(html.contains("kind-naming"))
+        XCTAssertTrue(html.contains("Bulk-Up") && html.contains("href=\"file://"))
+        XCTAssertTrue(html.contains("Import folders"))
         XCTAssertTrue(html.contains("Bulk-Up#1.woff2"))
         XCTAssertTrue(html.contains("Vault folder uses file name"))
         XCTAssertTrue(ImportReport.defaultIssueListFilename().hasSuffix(".html"))
+    }
+
+    func testIssueListHTMLFolderIndexIsPlainTextNotGRDBSQL() {
+        let report = ImportReport(
+            summaryLine: "test",
+            move: false,
+            scanned: 2,
+            imported: 2,
+            skipped: 0,
+            failedCount: 0,
+            ignoredUnsupported: 0,
+            ignoredFiltered: 0,
+            vaultFolderFallbackCount: 2,
+            failed: [],
+            skippedEntries: [],
+            namingFallbackEntries: [
+                ImportReportEntry(
+                    sourceURL: URL(fileURLWithPath: "/tmp/import/A.otf"),
+                    outcome: .vaultFolderNamingFallback,
+                    message: "Naming"
+                ),
+                ImportReportEntry(
+                    sourceURL: URL(fileURLWithPath: "/tmp/import/B.otf"),
+                    outcome: .vaultFolderNamingFallback,
+                    message: "Naming"
+                ),
+            ]
+        )
+        let html = ImportReport.issueListHTML(from: report)
+        XCTAssertTrue(html.contains("Import folders (1)"))
+        XCTAssertTrue(html.contains("<li><a href=\"file:///tmp/import/\">"))
+        XCTAssertFalse(html.contains("GRDB"))
+        XCTAssertFalse(html.contains("SQL(elements"))
     }
 }

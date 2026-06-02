@@ -18,7 +18,7 @@ enum AppMenuCopy {
     static let copyImportFailureList = "Copy Failure List"
     static let saveImportFailureList = "Save Failure List…"
     static let copyImportIssueList = "Copy Issue List"
-    static let saveImportReviewPackage = "Save Review Package…"
+    static let saveImportIssueList = "Save Issue Report…"
     static func importReportFailedSection(_ count: Int) -> String {
         "Failed (\(count))"
     }

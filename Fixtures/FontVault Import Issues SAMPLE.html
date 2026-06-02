@@ -6,52 +6,25 @@
   <title>FontVault Import Issues (Sample)</title>
   <style>
     :root { color-scheme: light dark; }
-    body {
-      font: 13px/1.45 -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      margin: 24px;
-      max-width: 1200px;
-    }
+    body { font: 13px/1.45 -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; margin: 24px; max-width: 1200px; }
     h1 { font-size: 1.25rem; margin: 0 0 0.35rem; }
     h2 { font-size: 1.05rem; margin: 1.5rem 0 0.6rem; }
     .meta { color: #666; margin: 0 0 1rem; font-size: 12px; }
-    .sample-banner {
-      font-size: 12px;
-      color: #1d4ed8;
-      background: #dbeafe;
-      border-radius: 8px;
-      padding: 8px 14px;
-      margin: 0 0 1rem;
-    }
-    @media (prefers-color-scheme: dark) {
-      .sample-banner { color: #93c5fd; background: #1e3a5f; }
-    }
-    .tips {
-      font-size: 12px;
-      color: #444;
-      background: #f4f4f5;
-      border-radius: 8px;
-      padding: 10px 14px;
-      margin: 0 0 1.25rem;
-    }
-    @media (prefers-color-scheme: dark) {
-      .meta { color: #aaa; }
-      .tips { color: #ccc; background: #2a2a2c; }
-    }
+    .sample-banner { font-size: 12px; color: #1d4ed8; background: #dbeafe; border-radius: 8px; padding: 8px 14px; margin: 0 0 1rem; }
+    @media (prefers-color-scheme: dark) { .sample-banner { color: #93c5fd; background: #1e3a5f; } }
+    .tips { font-size: 12px; color: #444; background: #f4f4f5; border-radius: 8px; padding: 10px 14px; margin: 0 0 1.25rem; }
+    @media (prefers-color-scheme: dark) { .meta { color: #aaa; } .tips { color: #ccc; background: #2a2a2c; } }
     .tips ul { margin: 0.35rem 0 0; padding-left: 1.2rem; }
     .folder-index { margin: 0 0 1.25rem; font-size: 12px; }
     .folder-index ul { margin: 0.35rem 0 0; padding-left: 1.2rem; }
     table { border-collapse: collapse; width: 100%; margin-bottom: 0.5rem; }
     th, td { text-align: left; vertical-align: top; padding: 8px 12px; border-bottom: 1px solid #ccc; }
     th { font-size: 12px; text-transform: uppercase; letter-spacing: 0.02em; background: #f4f4f5; }
-    @media (prefers-color-scheme: dark) {
-      th { background: #2a2a2c; }
-      th, td { border-bottom-color: #444; }
-    }
+    @media (prefers-color-scheme: dark) { th { background: #2a2a2c; } th, td { border-bottom-color: #444; } }
     .kind-failed { color: #c41e3a; font-weight: 600; white-space: nowrap; }
     .kind-naming { color: #b45309; font-weight: 600; white-space: nowrap; }
-    .folder a { word-break: break-all; }
-    .filename { font-weight: 500; }
-    .path { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 11px; color: #666; word-break: break-all; }
+    .folder a, .file a { word-break: break-all; }
+    .path { font-family: ui-monospace, Menlo, monospace; font-size: 11px; color: #666; word-break: break-all; }
     @media (prefers-color-scheme: dark) { .path { color: #999; } }
     .detail { color: #444; max-width: 28rem; }
     @media (prefers-color-scheme: dark) { .detail { color: #bbb; } }
@@ -59,30 +32,25 @@
 </head>
 <body>
   <h1>FontVault Import Issues</h1>
-  <p class="sample-banner"><strong>Sample report</strong> — for layout and link review only.</p>
-  <p class="sample-banner" style="margin-top: -0.5rem;"><strong>Review package (sample)</strong> —
-    <a href="file:///Users/skymacbook/Documents/Scripting/Good%20Font%20Scripts/FontVault/Fixtures/FontVault%20Import%20Issues%20SAMPLE%20PACKAGE/">Open sample package folder</a>
-    (copied files + <code>Import Issues.html</code>). In FontVault use Import Details →
-    <strong>Save Review Package…</strong> (collects files + this report).</p>
+  <p class="sample-banner"><strong>Sample report</strong> — layout preview only. Save from Import Details after a real import.</p>
   <p class="meta">Copied 12 fonts into the vault · Generated Jun 1, 2026 at 9:00 AM<br>
   2 failed · 4 naming review · 6 rows</p>
   <div class="tips">
-    <strong>Using this report in a browser</strong>
+    <strong>Using this report</strong>
     <ul>
-      <li><strong>Folder</strong> links open the directory in Finder (recommended).</li>
-      <li>Font file names are plain text — direct file links often trigger a download in Safari.</li>
-      <li>For Reveal in Finder on a specific file, use FontVault <em>Import Details</em> (View Details…).</li>
+      <li><strong>Folder</strong> links open the import directory in Finder.</li>
+      <li><strong>File</strong> links point at the original path (Safari may download the font instead of revealing it).</li>
+      <li>In FontVault, <em>Import Details</em> → right-click a row → Reveal in Finder.</li>
     </ul>
   </div>
   <div class="folder-index">
-    <strong>Folders in this report (3)</strong>
+    <strong>Import folders (2)</strong>
     <ul>
       <li><a href="file:///Users/skymacbook/Documents/Scripting/Good%20Font%20Scripts/FontVault/Fixtures/import-report-sample/Failed/">/Users/skymacbook/Documents/Scripting/Good Font Scripts/FontVault/Fixtures/import-report-sample/Failed</a></li>
       <li><a href="file:///Users/skymacbook/Documents/Scripting/Good%20Font%20Scripts/FontVault/Fixtures/import-report-sample/Naming/">/Users/skymacbook/Documents/Scripting/Good Font Scripts/FontVault/Fixtures/import-report-sample/Naming</a></li>
-      <li><a href="file:///Users/skymacbook/Documents/Scripting/Good%20Font%20Scripts/FontVault/Fixtures/">/Users/skymacbook/Documents/Scripting/Good Font Scripts/FontVault/Fixtures</a></li>
     </ul>
   </div>
-  <h2>Failed (2)</h2>
+  <h2>Issues (6)</h2>
   <table>
     <thead>
       <tr><th>Kind</th><th>Folder</th><th>File</th><th>Detail</th></tr>
@@ -91,63 +59,25 @@
       <tr>
         <td class="kind-failed">Failed</td>
         <td class="folder"><a href="file:///Users/skymacbook/Documents/Scripting/Good%20Font%20Scripts/FontVault/Fixtures/import-report-sample/Failed/" title="/Users/skymacbook/Documents/Scripting/Good Font Scripts/FontVault/Fixtures/import-report-sample/Failed">Failed</a></td>
-        <td class="file">
-          <span class="filename">Corrupt-Regular.otf</span><br>
-          <span class="path">/Users/skymacbook/Documents/Scripting/Good Font Scripts/FontVault/Fixtures/import-report-sample/Failed/Corrupt-Regular.otf</span>
-        </td>
+        <td class="file"><a href="file:///Users/skymacbook/Documents/Scripting/Good%20Font%20Scripts/FontVault/Fixtures/import-report-sample/Failed/Corrupt-Regular.otf" title="/Users/skymacbook/Documents/Scripting/Good Font Scripts/FontVault/Fixtures/import-report-sample/Failed/Corrupt-Regular.otf">Corrupt-Regular.otf</a><br><span class="path">/Users/skymacbook/Documents/Scripting/Good Font Scripts/FontVault/Fixtures/import-report-sample/Failed/Corrupt-Regular.otf</span></td>
         <td class="detail">Could not read font tables</td>
       </tr>
       <tr>
         <td class="kind-failed">Failed</td>
         <td class="folder"><a href="file:///Users/skymacbook/Documents/Scripting/Good%20Font%20Scripts/FontVault/Fixtures/import-report-sample/Failed/" title="/Users/skymacbook/Documents/Scripting/Good Font Scripts/FontVault/Fixtures/import-report-sample/Failed">Failed</a></td>
-        <td class="file">
-          <span class="filename">Empty-File.ttf</span><br>
-          <span class="path">/Users/skymacbook/Documents/Scripting/Good Font Scripts/FontVault/Fixtures/import-report-sample/Failed/Empty-File.ttf</span>
-        </td>
+        <td class="file"><a href="file:///Users/skymacbook/Documents/Scripting/Good%20Font%20Scripts/FontVault/Fixtures/import-report-sample/Failed/Empty-File.ttf" title="/Users/skymacbook/Documents/Scripting/Good Font Scripts/FontVault/Fixtures/import-report-sample/Failed/Empty-File.ttf">Empty-File.ttf</a><br><span class="path">/Users/skymacbook/Documents/Scripting/Good Font Scripts/FontVault/Fixtures/import-report-sample/Failed/Empty-File.ttf</span></td>
         <td class="detail">File is empty (0 bytes)</td>
       </tr>
-    </tbody>
-  </table>
-  <h2>Naming review (4)</h2>
-  <table>
-    <thead>
-      <tr><th>Kind</th><th>Folder</th><th>File</th><th>Detail</th></tr>
-    </thead>
-    <tbody>
       <tr>
         <td class="kind-naming">Naming</td>
         <td class="folder"><a href="file:///Users/skymacbook/Documents/Scripting/Good%20Font%20Scripts/FontVault/Fixtures/import-report-sample/Naming/" title="/Users/skymacbook/Documents/Scripting/Good Font Scripts/FontVault/Fixtures/import-report-sample/Naming">Naming</a></td>
-        <td class="file">
-          <span class="filename">Bulk-Up#1.woff2</span><br>
-          <span class="path">/Users/skymacbook/Documents/Scripting/Good Font Scripts/FontVault/Fixtures/import-report-sample/Naming/Bulk-Up#1.woff2</span>
-        </td>
+        <td class="file"><a href="file:///Users/skymacbook/Documents/Scripting/Good%20Font%20Scripts/FontVault/Fixtures/import-report-sample/Naming/Bulk-Up%231.woff2" title="/Users/skymacbook/Documents/Scripting/Good Font Scripts/FontVault/Fixtures/import-report-sample/Naming/Bulk-Up#1.woff2">Bulk-Up#1.woff2</a><br><span class="path">/Users/skymacbook/Documents/Scripting/Good Font Scripts/FontVault/Fixtures/import-report-sample/Naming/Bulk-Up#1.woff2</span></td>
         <td class="detail">Vault folder uses file name (Full name from font not usable)</td>
       </tr>
       <tr>
         <td class="kind-naming">Naming</td>
         <td class="folder"><a href="file:///Users/skymacbook/Documents/Scripting/Good%20Font%20Scripts/FontVault/Fixtures/import-report-sample/Naming/" title="/Users/skymacbook/Documents/Scripting/Good Font Scripts/FontVault/Fixtures/import-report-sample/Naming">Naming</a></td>
-        <td class="file">
-          <span class="filename">GhostTextMono-MediumItalic.woff2</span><br>
-          <span class="path">/Users/skymacbook/Documents/Scripting/Good Font Scripts/FontVault/Fixtures/import-report-sample/Naming/GhostTextMono-MediumItalic.woff2</span>
-        </td>
-        <td class="detail">Vault folder uses file name (Full name from font not usable)</td>
-      </tr>
-      <tr>
-        <td class="kind-naming">Naming</td>
-        <td class="folder"><a href="file:///Users/skymacbook/Documents/Scripting/Good%20Font%20Scripts/FontVault/Fixtures/import-report-sample/Naming/" title="/Users/skymacbook/Documents/Scripting/Good Font Scripts/FontVault/Fixtures/import-report-sample/Naming">Naming</a></td>
-        <td class="file">
-          <span class="filename">MiniatureDisplay-Regular#1.woff2</span><br>
-          <span class="path">/Users/skymacbook/Documents/Scripting/Good Font Scripts/FontVault/Fixtures/import-report-sample/Naming/MiniatureDisplay-Regular#1.woff2</span>
-        </td>
-        <td class="detail">Vault folder uses file name (Full name from font not usable)</td>
-      </tr>
-      <tr>
-        <td class="kind-naming">Naming</td>
-        <td class="folder"><a href="file:///Users/skymacbook/Documents/Scripting/Good%20Font%20Scripts/FontVault/Fixtures/" title="/Users/skymacbook/Documents/Scripting/Good Font Scripts/FontVault/Fixtures">Fixtures</a></td>
-        <td class="file">
-          <span class="filename">Legacy-NoFullName.otf</span><br>
-          <span class="path">/Users/skymacbook/Documents/Scripting/Good Font Scripts/FontVault/Fixtures/Legacy-NoFullName.otf</span>
-        </td>
+        <td class="file"><a href="file:///Users/skymacbook/Documents/Scripting/Good%20Font%20Scripts/FontVault/Fixtures/import-report-sample/Naming/GhostTextMono-MediumItalic.woff2" title="/Users/skymacbook/Documents/Scripting/Good Font Scripts/FontVault/Fixtures/import-report-sample/Naming/GhostTextMono-MediumItalic.woff2">GhostTextMono-MediumItalic.woff2</a><br><span class="path">/Users/skymacbook/Documents/Scripting/Good Font Scripts/FontVault/Fixtures/import-report-sample/Naming/GhostTextMono-MediumItalic.woff2</span></td>
         <td class="detail">Vault folder uses file name (Full name from font not usable)</td>
       </tr>
     </tbody>

@@ -890,33 +890,22 @@ final class AppState: ObservableObject {
             pasteboard.setData(htmlData, forType: .html)
         }
         let n = report.failed.count + report.namingFallbackEntries.count
-        statusMessage = "Copied \(n) issue\(n == 1 ? "" : "s") to clipboard (summary HTML; use Save Review Package for file copies)."
+        statusMessage = "Copied \(n) issue\(n == 1 ? "" : "s") to clipboard."
     }
 
-    func saveImportReviewPackage(_ report: ImportReport) {
-        guard report.hasExportableIssueRows else { return }
-        let panel = NSOpenPanel()
-        panel.canChooseFiles = false
-        panel.canChooseDirectories = true
+    func saveImportIssueList(_ report: ImportReport) {
+        let html = ImportReport.issueListHTML(from: report)
+        guard !html.isEmpty else { return }
+        let panel = NSSavePanel()
+        panel.allowedContentTypes = [.html]
+        panel.nameFieldStringValue = ImportReport.defaultIssueListFilename()
         panel.canCreateDirectories = true
-        panel.allowsMultipleSelection = false
-        panel.prompt = "Create Package Here"
-        panel.message =
-            "Creates “\(ImportIssueReviewExporter.defaultPackageFolderName())” with all flagged files and Import Issues.html (collect & download all)."
-        guard panel.runModal() == .OK, let parentURL = panel.url else { return }
+        guard panel.runModal() == .OK, let url = panel.url else { return }
         do {
-            let result = try ImportIssueReviewExporter.exportFolder(
-                report: report,
-                parentDirectory: parentURL
-            )
-            var message = "Saved review package with \(result.copiedCount) file\(result.copiedCount == 1 ? "" : "s")."
-            if result.missingCount > 0 {
-                message += " \(result.missingCount) missing at export time."
-            }
-            statusMessage = message
-            NSWorkspace.shared.activateFileViewerSelecting([result.packageURL])
+            try html.write(to: url, atomically: true, encoding: .utf8)
+            statusMessage = "Saved issue report to \(url.lastPathComponent)."
         } catch {
-            showErrorAlert("Could not save review package", error.localizedDescription)
+            showErrorAlert("Could not save file", error.localizedDescription)
         }
     }
 
@@ -925,11 +914,7 @@ final class AppState: ObservableObject {
     }
 
     func saveImportFailureList(_ report: ImportReport) {
-        saveImportReviewPackage(report)
-    }
-
-    func saveImportIssueList(_ report: ImportReport) {
-        saveImportReviewPackage(report)
+        saveImportIssueList(report)
     }
 
     private func showErrorAlert(_ title: String, _ message: String) {

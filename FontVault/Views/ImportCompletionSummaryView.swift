@@ -70,7 +70,7 @@ struct ImportCompletionSummaryView: View {
                 .foregroundStyle(.secondary)
                 .fixedSize(horizontal: false, vertical: true)
                 if report.hasExportableIssueRows {
-                    Text("Review in View Details — Save Review Package collects all flagged files and an HTML report.")
+                    Text("Review in View Details — copy or save an HTML issue report with links to source files.")
                         .font(.callout)
                         .foregroundStyle(.tertiary)
                 }

@@ -90,47 +90,15 @@ extension ImportReport {
         }.joined(separator: "\n")
     }
 
-    /// HTML import report. When `packageRoot` and `copiedFiles` are set, links are relative and a collect-all download list is included.
-    static func issueListHTML(
-        from report: ImportReport,
-        packageRoot: URL? = nil,
-        copiedFiles: [UUID: URL]? = nil,
-        generatedAt: Date = Date()
-    ) -> String {
-        let entries = issueExportEntries(report)
+    /// Single HTML report: summary, folder shortcuts, and one consolidated issue table (links to original import paths).
+    static func issueListHTML(from report: ImportReport, generatedAt: Date = Date()) -> String {
+        let entries = sortedIssueExportEntries(report)
         let generated = issueListGeneratedTimestamp(generatedAt)
         let headline = htmlEscape(report.importHeadline)
         let failedCount = report.failed.count
         let namingCount = report.namingFallbackEntries.count
-        let resolveURL: (ImportReportEntry) -> URL = { entry in
-            copiedFiles?[entry.id] ?? entry.sourceURL
-        }
-        let inPackage = packageRoot != nil
-        let collectAll = issueListCollectAllHTML(
-            entries: entries,
-            copiedFiles: copiedFiles ?? [:],
-            packageRoot: packageRoot
-        )
-        let folderIndex = issueListFolderIndexHTML(
-            entries: entries,
-            resolveURL: resolveURL,
-            packageRoot: packageRoot
-        )
-        let failedSection = issueListSectionHTML(
-            title: "Failed",
-            entries: report.failed,
-            resolveURL: resolveURL,
-            packageRoot: packageRoot,
-            emptyMessage: nil
-        )
-        let namingSection = issueListSectionHTML(
-            title: "Naming review",
-            entries: report.namingFallbackEntries,
-            resolveURL: resolveURL,
-            packageRoot: packageRoot,
-            emptyMessage: nil
-        )
-        let tips = inPackage ? issueListPackageTipsHTML() : issueListStandaloneTipsHTML()
+        let folderIndex = issueListFolderIndexHTML(entries: entries)
+        let rows = entries.map { issueListRowHTML(entry: $0) }.joined()
         return """
         <!DOCTYPE html>
         <html lang="en">
@@ -178,140 +146,61 @@ extension ImportReport {
             @media (prefers-color-scheme: dark) { .path { color: #999; } }
             .detail { color: #444; max-width: 28rem; }
             @media (prefers-color-scheme: dark) { .detail { color: #bbb; } }
-            .collect-all { margin: 0 0 1.25rem; font-size: 12px; }
-            .collect-all ul { margin: 0.5rem 0 0; padding-left: 1.2rem; columns: 2; column-gap: 2rem; }
-            @media (max-width: 720px) { .collect-all ul { columns: 1; } }
-            .collect-all li { margin-bottom: 0.35rem; break-inside: avoid; }
-            .collect-all .missing { color: #888; font-style: italic; }
           </style>
         </head>
         <body>
           <h1>FontVault Import Issues</h1>
           <p class="meta">\(headline) · Generated \(generated)<br>
           \(failedCount) failed · \(namingCount) naming review · \(entries.count) row\(entries.count == 1 ? "" : "s")</p>
-          \(tips)
-          \(collectAll)
+          <div class="tips">
+            <strong>Using this report</strong>
+            <ul>
+              <li><strong>Folder</strong> links open the import directory in Finder.</li>
+              <li><strong>File</strong> links point at the original path (Safari may download the font instead of revealing it).</li>
+              <li>In FontVault, <em>Import Details</em> → right-click a row → Reveal in Finder.</li>
+            </ul>
+          </div>
           \(folderIndex)
-          \(failedSection)
-          \(namingSection)
+          <h2>Issues (\(entries.count))</h2>
+          <table>
+            <thead>
+              <tr><th>Kind</th><th>Folder</th><th>File</th><th>Detail</th></tr>
+            </thead>
+            <tbody>
+        \(rows)  </tbody>
+          </table>
         </body>
         </html>
         """
     }
 
-    private static func issueListPackageTipsHTML() -> String {
-        """
-        <div class="tips">
-          <strong>Review package</strong>
-          <ul>
-            <li>Flagged files were copied into this folder (<code>Failed/</code>, <code>Naming/</code>).</li>
-            <li><strong>Collect &amp; download all</strong> — use the links below (or open subfolders in Finder).</li>
-            <li>Original import sources were not modified.</li>
-          </ul>
-        </div>
-        """
-    }
-
-    private static func issueListStandaloneTipsHTML() -> String {
-        """
-        <div class="tips">
-          <strong>Report only</strong>
-          <ul>
-            <li>This HTML does not include file copies. In FontVault use <strong>Save Review Package…</strong> to collect all flagged files into a folder with this report.</li>
-            <li>For Reveal in Finder on a specific file, use <em>Import Details</em> (View Details…).</li>
-          </ul>
-        </div>
-        """
-    }
-
-    private static func issueListCollectAllHTML(
-        entries: [ImportReportEntry],
-        copiedFiles: [UUID: URL],
-        packageRoot: URL?
-    ) -> String {
-        guard let packageRoot, !entries.isEmpty else { return "" }
-        let sorted = entries.sorted {
-            $0.displayName.localizedStandardCompare($1.displayName) == .orderedAscending
+    private static func sortedIssueExportEntries(_ report: ImportReport) -> [ImportReportEntry] {
+        issueExportEntries(report).sorted { lhs, rhs in
+            let lk = lhs.outcome == .failed ? 0 : 1
+            let rk = rhs.outcome == .failed ? 0 : 1
+            if lk != rk { return lk < rk }
+            return lhs.sourceURL.path.localizedStandardCompare(rhs.sourceURL.path) == .orderedAscending
         }
-        let items = sorted.map { entry -> String in
-            let kind = issueKindLabel(for: entry.outcome)
-            let kindClass = entry.outcome == .failed ? "kind-failed" : "kind-naming"
-            guard let copied = copiedFiles[entry.id] else {
-                return "<li class=\"missing\">\(htmlEscape(kind)): \(htmlEscape(entry.displayName)) (not copied — missing at export)</li>"
-            }
-            let rel = packageRelativePath(fileURL: copied, packageRoot: packageRoot)
-            let href = htmlAttributeEscape(rel)
-            let name = htmlEscape(copied.lastPathComponent)
-            let download = htmlAttributeEscape(copied.lastPathComponent)
-            return "<li><span class=\"\(kindClass)\">\(htmlEscape(kind))</span> <a href=\"\(href)\" download=\"\(download)\">\(name)</a></li>"
-        }.joined(separator: "\n")
-        let copiedCount = entries.filter { copiedFiles[$0.id] != nil }.count
-        return """
-        <div class="collect-all">
-          <h2>Collect &amp; download all (\(copiedCount))</h2>
-          <p>Copies are in this folder. Click a file to download it, or <a href="./">open this package folder</a> in Finder.</p>
-          <ul>
-        \(items)
-          </ul>
-        </div>
-        """
     }
 
-    private static func issueListSectionHTML(
-        title: String,
-        entries: [ImportReportEntry],
-        resolveURL: (ImportReportEntry) -> URL,
-        packageRoot: URL?,
-        emptyMessage: String?
-    ) -> String {
-        guard !entries.isEmpty else {
-            guard let emptyMessage else { return "" }
-            return "<p class=\"meta\">\(htmlEscape(emptyMessage))</p>\n"
-        }
-        let rows = entries.map {
-            issueListRowHTML(entry: $0, fileURL: resolveURL($0), packageRoot: packageRoot)
-        }.joined()
-        return """
-        <h2>\(htmlEscape(title)) (\(entries.count))</h2>
-        <table>
-          <thead>
-            <tr><th>Kind</th><th>Folder</th><th>File</th><th>Detail</th></tr>
-          </thead>
-          <tbody>
-        \(rows)  </tbody>
-        </table>
-
-        """
-    }
-
-    private static func issueListRowHTML(
-        entry: ImportReportEntry,
-        fileURL: URL,
-        packageRoot: URL?
-    ) -> String {
+    private static func issueListRowHTML(entry: ImportReportEntry) -> String {
         let kind = issueKindLabel(for: entry.outcome)
         let kindClass = entry.outcome == .failed ? "kind-failed" : "kind-naming"
+        let fileURL = entry.sourceURL
         let folderURL = directoryFileURL(for: fileURL)
-        let folderHref = issueListHref(for: folderURL, packageRoot: packageRoot, isDirectory: true)
+        let folderHref = htmlAttributeEscape(folderURL.absoluteString)
         let folderLabel = htmlEscape(folderURL.lastPathComponent.isEmpty ? folderURL.path : folderURL.lastPathComponent)
         let folderPath = htmlAttributeEscape(folderURL.path)
-        let fileName = htmlEscape(fileURL.lastPathComponent)
+        let fileHref = htmlAttributeEscape(fileURL.absoluteString)
+        let fileName = htmlEscape(entry.displayName)
         let fullPath = htmlEscape(fileURL.path)
         let detail = htmlEscape(entry.message)
-        let fileLink: String
-        if packageRoot != nil {
-            let rel = issueListHref(for: fileURL, packageRoot: packageRoot, isDirectory: false)
-            let download = htmlAttributeEscape(fileURL.lastPathComponent)
-            fileLink = "<a href=\"\(rel)\" download=\"\(download)\">\(fileName)</a>"
-        } else {
-            fileLink = "<span class=\"filename\">\(fileName)</span>"
-        }
         return """
           <tr>
             <td class="\(kindClass)">\(htmlEscape(kind))</td>
             <td class="folder"><a href="\(folderHref)" title="\(folderPath)">\(folderLabel)</a></td>
             <td class="file">
-              \(fileLink)<br>
+              <a href="\(fileHref)" title="\(fullPath)">\(fileName)</a><br>
               <span class="path">\(fullPath)</span>
             </td>
             <td class="detail">\(detail)</td>
@@ -320,64 +209,47 @@ extension ImportReport {
         """
     }
 
-    private static func issueListFolderIndexHTML(
-        entries: [ImportReportEntry],
-        resolveURL: (ImportReportEntry) -> URL,
-        packageRoot: URL?
-    ) -> String {
+    private static func issueListFolderIndexHTML(entries: [ImportReportEntry]) -> String {
         var seen = Set<String>()
         var folders: [URL] = []
         for entry in entries {
-            let fileURL = resolveURL(entry)
-            let folder = directoryFileURL(for: fileURL)
-            let key = folder.path
-            if seen.insert(key).inserted {
+            let folder = directoryFileURL(for: entry.sourceURL)
+            if seen.insert(folder.path).inserted {
                 folders.append(folder)
             }
         }
         folders.sort { $0.path.localizedStandardCompare($1.path) == .orderedAscending }
         guard !folders.isEmpty else { return "" }
-        let items = folders.map { folder in
-            let href = issueListHref(for: folder, packageRoot: packageRoot, isDirectory: true)
-            let label = htmlEscape(
-                packageRoot != nil
-                    ? packageRelativePath(fileURL: folder, packageRoot: packageRoot!) + "/"
-                    : folder.path
-            )
-            return "<li><a href=\"\(href)\">\(label)</a></li>"
+        // Use String concatenation, not `"…\(x)…"` — GRDB in this module hijacks that into SQL literals.
+        let items: String = folders.map { folder -> String in
+            let href = htmlAttributeEscape(folder.absoluteString)
+            let label = htmlEscape(folder.path)
+            return "<li><a href=\"" + href + "\">" + label + "</a></li>"
         }.joined(separator: "\n")
-        return """
-        <div class="folder-index">
-          <strong>Folders in this report (\(folders.count))</strong>
-          <ul>
-        \(items)
-          </ul>
-        </div>
+        return htmlLiteral(
+            """
+            <div class="folder-index">
+              <strong>Import folders (\(folders.count))</strong>
+              <ul>
+            """,
+            items,
+            """
+              </ul>
+            </div>
 
-        """
+            """
+        )
+    }
+
+    /// Join HTML fragments as plain `String` (avoids GRDB SQL string interpolation in this target).
+    private static func htmlLiteral(_ parts: String...) -> String {
+        parts.joined()
     }
 
     /// Directory `file://` URL with trailing slash so browsers open Finder instead of downloading.
     private static func directoryFileURL(for fileURL: URL) -> URL {
         let path = fileURL.deletingLastPathComponent().path
         return URL(fileURLWithPath: path, isDirectory: true)
-    }
-
-    private static func packageRelativePath(fileURL: URL, packageRoot: URL) -> String {
-        let root = packageRoot.standardizedFileURL.path
-        let file = fileURL.standardizedFileURL.path
-        guard file.hasPrefix(root + "/") else { return fileURL.lastPathComponent }
-        return String(file.dropFirst(root.count + 1))
-    }
-
-    private static func issueListHref(for url: URL, packageRoot: URL?, isDirectory: Bool) -> String {
-        if let packageRoot {
-            var rel = packageRelativePath(fileURL: url, packageRoot: packageRoot)
-            if isDirectory, !rel.hasSuffix("/") { rel += "/" }
-            return htmlAttributeEscape(rel)
-        }
-        let target = isDirectory ? url : url
-        return htmlAttributeEscape((isDirectory ? directoryFileURL(for: url) : target).absoluteString)
     }
 
     static func defaultIssueListFilename(date: Date = Date()) -> String {

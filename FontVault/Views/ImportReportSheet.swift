@@ -44,8 +44,8 @@ struct ImportReportSheet: View {
                 }
                 .disabled(!report.hasExportableIssueRows)
 
-                Button(AppMenuCopy.saveImportReviewPackage) {
-                    appState.saveImportReviewPackage(report)
+                Button(AppMenuCopy.saveImportIssueList) {
+                    appState.saveImportIssueList(report)
                 }
                 .disabled(!report.hasExportableIssueRows)
 
@@ -59,7 +59,7 @@ struct ImportReportSheet: View {
             }
         }
         .padding(DesignMetrics.windowMargin + 4)
-        .frame(width: 520)
+        .frame(width: 480)
         .frame(minHeight: 280, idealHeight: 380, maxHeight: 420)
     }
 }
