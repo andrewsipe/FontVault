@@ -1,7 +1,5 @@
 # Root directory
 https://raw.githubusercontent.com/andrewsipe/FontVault/main/.gitmodules
-https://raw.githubusercontent.com/andrewsipe/FontVault/main/FontVault Import Issues 2026-05-31 2146.txt
-https://raw.githubusercontent.com/andrewsipe/FontVault/main/FontVault Import Issues 2026-06-01 0817.html
 https://raw.githubusercontent.com/andrewsipe/FontVault/main/HANDOFF.md
 https://raw.githubusercontent.com/andrewsipe/FontVault/main/NOTES.md
 https://raw.githubusercontent.com/andrewsipe/FontVault/main/PHASE2_SPEC.md
@@ -115,7 +113,6 @@ https://raw.githubusercontent.com/andrewsipe/FontVault/main/FontVault/Services/F
 https://raw.githubusercontent.com/andrewsipe/FontVault/main/FontVault/Services/FontVaultDragTypes.swift
 https://raw.githubusercontent.com/andrewsipe/FontVault/main/FontVault/Services/FontVendorRegistry.swift
 https://raw.githubusercontent.com/andrewsipe/FontVault/main/FontVault/Services/ImportDateDisplay.swift
-https://raw.githubusercontent.com/andrewsipe/FontVault/main/FontVault/Services/ImportIssueReviewExporter.swift
 https://raw.githubusercontent.com/andrewsipe/FontVault/main/FontVault/Services/ImportStaging.swift
 https://raw.githubusercontent.com/andrewsipe/FontVault/main/FontVault/Services/LayoutEngine.swift
 https://raw.githubusercontent.com/andrewsipe/FontVault/main/FontVault/Services/VaultCoordinator.swift
@@ -161,7 +158,6 @@ https://raw.githubusercontent.com/andrewsipe/FontVault/main/FontVaultTests/FontN
 https://raw.githubusercontent.com/andrewsipe/FontVault/main/FontVaultTests/FontTableBinaryReaderTests.swift
 https://raw.githubusercontent.com/andrewsipe/FontVault/main/FontVaultTests/ImportDateDisplayTests.swift
 https://raw.githubusercontent.com/andrewsipe/FontVault/main/FontVaultTests/ImportFormatOptionsTests.swift
-https://raw.githubusercontent.com/andrewsipe/FontVault/main/FontVaultTests/ImportIssueReviewExporterTests.swift
 https://raw.githubusercontent.com/andrewsipe/FontVault/main/FontVaultTests/ImportReportTests.swift
 https://raw.githubusercontent.com/andrewsipe/FontVault/main/FontVaultTests/LayoutEngineTests.swift
 https://raw.githubusercontent.com/andrewsipe/FontVault/main/FontVaultTests/ListStatusDetailTests.swift

@@ -139,29 +139,72 @@ struct FontTableSettingsTab: View {
     @ObservedObject private var settings = VaultSettings.shared
 
     var body: some View {
-        VStack(alignment: .leading, spacing: 12) {
-            Text("Turn columns on or off and drag to reorder. The Name column stays first in the font table.")
-                .font(.caption)
-                .foregroundStyle(.secondary)
-                .fixedSize(horizontal: false, vertical: true)
-
-            Text("In the font table: click a header to sort; drag a header to reorder; drag a divider to resize; right-click a header for visibility.")
-                .font(.caption)
-                .foregroundStyle(.secondary)
-                .fixedSize(horizontal: false, vertical: true)
-
-            VStack(alignment: .leading, spacing: 8) {
-                Picker("Row layout", selection: $settings.listRowDensity) {
-                    ForEach(FontListRowDensity.allCases) { density in
-                        Text(density.label).tag(density)
+        VStack(alignment: .leading, spacing: 0) {
+            Form {
+                Section {
+                    Picker("Grouped list", selection: $settings.groupedListSortPreset) {
+                        ForEach(FontListSortPreset.allCases) { preset in
+                            Text(preset.label).tag(preset)
+                        }
                     }
+                    Picker("Flat list", selection: $settings.flatListSortPreset) {
+                        ForEach(FontListSortPreset.allCases) { preset in
+                            Text(preset.label).tag(preset)
+                        }
+                    }
+                } header: {
+                    Text("Default sort")
+                } footer: {
+                    defaultSortSectionFooter
                 }
-                .pickerStyle(.segmented)
-                Text(settings.listRowDensity.detail)
-                    .font(.caption)
-                    .foregroundStyle(.secondary)
-                    .fixedSize(horizontal: false, vertical: true)
+
+                Section {
+                    Picker("Density", selection: $settings.listRowDensity) {
+                        ForEach(FontListRowDensity.allCases) { density in
+                            Text(density.label).tag(density)
+                        }
+                    }
+                    .pickerStyle(.segmented)
+                } header: {
+                    Text("Row layout")
+                } footer: {
+                    Text(settings.listRowDensity.detail)
+                }
             }
+            .formStyle(.grouped)
+            .padding(.horizontal, DesignMetrics.windowMargin)
+            .padding(.top, DesignMetrics.windowMargin)
+
+            columnsSection
+        }
+    }
+
+    private var defaultSortSectionFooter: some View {
+        VStack(alignment: .leading, spacing: 6) {
+            Text("Grouped: \(settings.groupedListSortPreset.detail)")
+            Text("Flat: \(settings.flatListSortPreset.detail)")
+            Text("A column-header sort overrides these until you choose View → Reset List Sort to Default.")
+        }
+    }
+
+    private var columnsSection: some View {
+        VStack(alignment: .leading, spacing: DesignMetrics.controlSpacing) {
+            Text("Visible columns")
+                .font(.headline)
+                .padding(.horizontal, DesignMetrics.windowMargin)
+                .padding(.top, DesignMetrics.sectionSpacing)
+
+            Text(
+                """
+                Turn columns on or off and drag rows to reorder (Name stays first). \
+                In the table: click a header to sort, drag headers to reorder columns, \
+                drag dividers to resize, right‑click headers for visibility.
+                """
+            )
+            .font(.caption)
+            .foregroundStyle(.secondary)
+            .fixedSize(horizontal: false, vertical: true)
+            .padding(.horizontal, DesignMetrics.windowMargin)
 
             List {
                 ForEach(settings.listColumnOrder) { column in
@@ -178,14 +221,16 @@ struct FontTableSettingsTab: View {
                 .onMove { settings.moveListColumn(fromOffsets: $0, toOffset: $1) }
             }
             .listStyle(.inset)
+            .frame(minHeight: 160, maxHeight: .infinity)
 
             HStack {
                 Button(AppMenuCopy.resetColumnWidths) { settings.resetListColumnWidths() }
                 Button("Reset to Defaults") { settings.resetListColumnsToDefault() }
                 Spacer()
             }
+            .padding(.horizontal, DesignMetrics.windowMargin)
+            .padding(.bottom, DesignMetrics.windowMargin)
         }
-        .padding(20)
     }
 
     private func columnBinding(_ column: FontListColumn) -> Binding<Bool> {

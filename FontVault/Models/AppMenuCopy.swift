@@ -56,6 +56,7 @@ enum AppMenuCopy {
     static let hideCounters = "Hide Counters"
     static let find = "Find…"
     static let groupByFamily = "Group by Family"
+    static let resetListSortToDefault = "Reset List Sort to Default"
 
     static let selectAllFamilies = "Select All Families"
     static let selectAllFonts = "Select All Fonts"

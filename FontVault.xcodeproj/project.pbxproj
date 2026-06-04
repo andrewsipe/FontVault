@@ -106,6 +106,10 @@
 		B1000074 /* ImportReportSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1000074 /* ImportReportSheet.swift */; };
 		B1000075 /* ImportReportTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1000075 /* ImportReportTests.swift */; };
 		B1000076 /* ImportCompletionSummaryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1000076 /* ImportCompletionSummaryView.swift */; };
+		B1000079 /* FontListColumnClassificationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1000079 /* FontListColumnClassificationTests.swift */; };
+		B100007A /* FontListSortPreset.swift in Sources */ = {isa = PBXBuildFile; fileRef = F100007A /* FontListSortPreset.swift */; };
+		B100007B /* FontListStyleSort.swift in Sources */ = {isa = PBXBuildFile; fileRef = F100007B /* FontListStyleSort.swift */; };
+		B100007C /* FontListStyleSortTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F100007C /* FontListStyleSortTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -220,6 +224,10 @@
 		F1000074 /* ImportReportSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImportReportSheet.swift; sourceTree = "<group>"; };
 		F1000075 /* ImportReportTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImportReportTests.swift; sourceTree = "<group>"; };
 		F1000076 /* ImportCompletionSummaryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImportCompletionSummaryView.swift; sourceTree = "<group>"; };
+		F1000079 /* FontListColumnClassificationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontListColumnClassificationTests.swift; sourceTree = "<group>"; };
+		F100007A /* FontListSortPreset.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontListSortPreset.swift; sourceTree = "<group>"; };
+		F100007B /* FontListStyleSort.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontListStyleSort.swift; sourceTree = "<group>"; };
+		F100007C /* FontListStyleSortTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontListStyleSortTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -287,6 +295,8 @@
 				F1000075 /* ImportReportTests.swift */,
 				F1000034 /* FontNameTableReaderTests.swift */,
 				F100005A /* FontTableBinaryReaderTests.swift */,
+				F1000079 /* FontListColumnClassificationTests.swift */,
+				F100007C /* FontListStyleSortTests.swift */,
 			);
 			path = FontVaultTests;
 			sourceTree = "<group>";
@@ -323,6 +333,8 @@
 				F1000043 /* ImportProgressState.swift */,
 				F100004B /* LaunchPhase.swift */,
 				F100004D /* FontListRowDensity.swift */,
+				F100007A /* FontListSortPreset.swift */,
+				F100007B /* FontListStyleSort.swift */,
 				F100004E /* FontFamilyUniformValues.swift */,
 				F100005D /* FontFamilyFieldState.swift */,
 				F100005E /* MetadataIssue.swift */,
@@ -518,6 +530,8 @@
 				B100004B /* LaunchPhase.swift in Sources */,
 				B100004C /* LaunchProgressView.swift in Sources */,
 				B100004D /* FontListRowDensity.swift in Sources */,
+				B100007A /* FontListSortPreset.swift in Sources */,
+				B100007B /* FontListStyleSort.swift in Sources */,
 				B100004E /* FontFamilyUniformValues.swift in Sources */,
 				B100004F /* FontVendorRegistry.swift in Sources */,
 				B1000049 /* SidebarItem.swift in Sources */,
@@ -613,6 +627,8 @@
 				B1000071 /* ListStatusDetailTests.swift in Sources */,
 				B1000072 /* StatusBarCopyTests.swift in Sources */,
 				B1000075 /* ImportReportTests.swift in Sources */,
+				B1000079 /* FontListColumnClassificationTests.swift in Sources */,
+				B100007C /* FontListStyleSortTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

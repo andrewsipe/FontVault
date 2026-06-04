@@ -34,6 +34,10 @@ final class AppState: ObservableObject {
         coordinator.onReorganizeProgressState = { [weak self] state in
             self?.updateProgressSession(state, operation: .reorganizeVault)
         }
+        settings.onListSortPresetChanged = { [weak self] in
+            self?.applyDefaultListSortIfUsingPreset()
+            self?.scheduleRefreshList()
+        }
     }
 
     private func updateProgressSession(_ state: ImportProgressState?, operation: ModalProgressOperation) {
@@ -117,6 +121,7 @@ final class AppState: ObservableObject {
     @Published var groupByFamily: Bool = true {
         didSet {
             guard groupByFamily != oldValue else { return }
+            applyDefaultListSort()
             scheduleRefreshList()
         }
     }
@@ -400,7 +405,26 @@ final class AppState: ObservableObject {
 
     /// Launch browse load: paths only for flat mode; collapse all families to avoid N+1 child fetches.
     private func refreshListForLaunch() throws {
+        applyDefaultListSort()
         try refreshListCore(preloadFirstPage: false, collapseAllFamiliesOnLaunch: groupByFamily)
+    }
+
+    /// Applies the grouped or flat default sort preset from Settings.
+    func applyDefaultListSort() {
+        let preset = groupByFamily ? settings.groupedListSortPreset : settings.flatListSortPreset
+        sortColumn = preset.sortColumn
+        sortAscending = true
+    }
+
+    /// Re-applies layout defaults when the user is still on a preset sort (not a column-header override).
+    func applyDefaultListSortIfUsingPreset() {
+        guard FontListSortPreset.isPresetSortColumn(sortColumn) else { return }
+        applyDefaultListSort()
+    }
+
+    func resetListSortToDefault() {
+        applyDefaultListSort()
+        scheduleRefreshList()
     }
 
     private func refreshListCore(preloadFirstPage: Bool, collapseAllFamiliesOnLaunch: Bool) throws {

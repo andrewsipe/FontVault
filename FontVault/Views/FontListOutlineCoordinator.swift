@@ -255,6 +255,13 @@ final class FontListOutlineCoordinator: NSObject {
         return headerFrame.contains(event.locationInWindow)
     }
 
+    private func columnShowsSortIndicator(_ column: FontListColumn) -> Bool {
+        if sortColumn == FontListSortPreset.styleOrderSortColumn {
+            return column == .name
+        }
+        return column.databaseSortColumn == sortColumn
+    }
+
     private func updateSortIndicators() {
         guard let outlineView else { return }
         let nameHeaderInset = FontListOutlineChrome.nameColumnHeaderLeadingInset(
@@ -273,7 +280,7 @@ final class FontListOutlineCoordinator: NSObject {
             }
             headerCell.stringValue = column.title
             headerCell.titleLeadingInset = column == .name ? nameHeaderInset : 6
-            if column.databaseSortColumn == sortColumn {
+            if columnShowsSortIndicator(column) {
                 headerCell.sortIndicator = sortAscending ? .ascending : .descending
             } else {
                 headerCell.sortIndicator = .none
@@ -945,7 +952,7 @@ extension FontListOutlineCoordinator: NSOutlineViewDelegate {
             outlineView: outlineView,
             column: column,
             presentation: presentation,
-            trailing: column.isTrailing,
+            trailing: column.prefersTrailingAlignment,
             emphasized: emphasized,
             showsTooltip: column == .name || presentation.showsMetadataAttention || presentation.showsLink,
             dimmedExcluded: dimExcluded

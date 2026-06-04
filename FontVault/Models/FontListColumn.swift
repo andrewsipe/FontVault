@@ -29,6 +29,10 @@ enum FontListColumn: String, CaseIterable, Identifiable, Codable, Sendable {
     case licenseURL
     case manufacturerURL
     case designerURL
+    case glyphCount
+    case weightClass
+    case widthClass
+    case mono
 
     var id: String { rawValue }
 
@@ -60,6 +64,10 @@ enum FontListColumn: String, CaseIterable, Identifiable, Codable, Sendable {
         case .licenseURL: return "License URL"
         case .manufacturerURL: return "Manufacturer URL"
         case .designerURL: return "Designer URL"
+        case .glyphCount: return "Glyphs"
+        case .weightClass: return "Weight"
+        case .widthClass: return "Width"
+        case .mono: return "Mono"
         }
     }
 
@@ -76,6 +84,8 @@ enum FontListColumn: String, CaseIterable, Identifiable, Codable, Sendable {
         case .formatDetailed: return 180
         case .vendorID: return 64
         case .vendor: return 100
+        case .glyphCount, .weightClass, .widthClass: return 64
+        case .mono: return 52
         default: return 120
         }
     }
@@ -84,6 +94,7 @@ enum FontListColumn: String, CaseIterable, Identifiable, Codable, Sendable {
         switch self {
         case .name: return 120
         case .format: return 72
+        case .glyphCount, .weightClass, .widthClass, .mono: return 48
         default: return 56
         }
     }
@@ -129,6 +140,10 @@ enum FontListColumn: String, CaseIterable, Identifiable, Codable, Sendable {
         case .licenseURL: return "licenseURL"
         case .manufacturerURL: return "manufacturerURL"
         case .designerURL: return "designerURL"
+        case .glyphCount: return "glyphCount"
+        case .weightClass: return "weightClass"
+        case .widthClass: return "widthClass"
+        case .mono: return "isFixedPitch"
         }
     }
 
@@ -175,6 +190,10 @@ enum FontListColumn: String, CaseIterable, Identifiable, Codable, Sendable {
         case .licenseURL: return KeyPathComparator(\.licenseURL, order: order)
         case .manufacturerURL: return KeyPathComparator(\.manufacturerURL, order: order)
         case .designerURL: return KeyPathComparator(\.designerURL, order: order)
+        case .glyphCount: return KeyPathComparator(\.sortGlyphCount, order: order)
+        case .weightClass: return KeyPathComparator(\.sortWeightClass, order: order)
+        case .widthClass: return KeyPathComparator(\.sortWidthClass, order: order)
+        case .mono: return KeyPathComparator(\.sortFixedPitch, order: order)
         }
     }
 
@@ -214,6 +233,10 @@ enum FontListColumn: String, CaseIterable, Identifiable, Codable, Sendable {
         case .licenseURL: return font.licenseURL
         case .manufacturerURL: return font.manufacturerURL
         case .designerURL: return font.designerURL
+        case .glyphCount: return font.extractedDetails.glyphCountDisplay
+        case .weightClass: return font.extractedDetails.weightClassDisplay
+        case .widthClass: return font.extractedDetails.widthClassDisplay
+        case .mono: return font.extractedDetails.fixedPitchDisplay
         }
     }
 
@@ -237,8 +260,17 @@ enum FontListColumn: String, CaseIterable, Identifiable, Codable, Sendable {
         case .trademark: return .trademark
         case .copyright: return .copyright
         case .vendor, .license, .licenseURL, .manufacturerURL, .designerURL,
-             .format, .size, .importDate, .path:
+             .format, .size, .importDate, .path,
+             .glyphCount, .weightClass, .widthClass, .mono:
             return nil
+        }
+    }
+
+    /// Right-align numeric classification values in the outline.
+    var prefersTrailingAlignment: Bool {
+        switch self {
+        case .size, .glyphCount, .weightClass, .widthClass: return true
+        default: return isTrailing
         }
     }
 
@@ -317,6 +349,8 @@ enum FontListColumn: String, CaseIterable, Identifiable, Codable, Sendable {
             return section.importDateState
         case .path:
             return .empty
+        case .glyphCount, .weightClass, .widthClass, .mono:
+            return FontFamilyUniformValues.aggregateFieldState(from: childFonts, column: self)
         default:
             return section.uniformValues.fieldState(for: self) ?? .empty
         }

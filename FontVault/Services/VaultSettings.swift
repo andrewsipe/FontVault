@@ -22,6 +22,8 @@ final class VaultSettings: ObservableObject {
         static let listColumnWidths = "listColumnWidths"
         static let listColumnOrder = "listColumnOrder"
         static let listRowDensity = "listRowDensity"
+        static let groupedListSortPreset = "groupedListSortPreset"
+        static let flatListSortPreset = "flatListSortPreset"
         static let catalogMetadataVersion = "catalogMetadataVersion"
         static let showLibraryCounters = "showLibraryCounters"
         static let lastCatalogOptimization = "lastCatalogOptimization"
@@ -105,6 +107,27 @@ final class VaultSettings: ObservableObject {
         }
     }
 
+    /// Default sort within each family when **Group by Family** is on.
+    @Published var groupedListSortPreset: FontListSortPreset {
+        didSet {
+            guard groupedListSortPreset != oldValue else { return }
+            UserDefaults.standard.set(groupedListSortPreset.rawValue, forKey: Keys.groupedListSortPreset)
+            onListSortPresetChanged?()
+        }
+    }
+
+    /// Default sort for the flat (ungrouped) font list.
+    @Published var flatListSortPreset: FontListSortPreset {
+        didSet {
+            guard flatListSortPreset != oldValue else { return }
+            UserDefaults.standard.set(flatListSortPreset.rawValue, forKey: Keys.flatListSortPreset)
+            onListSortPresetChanged?()
+        }
+    }
+
+    /// Called when grouped/flat list sort presets change (wired from `AppState`).
+    var onListSortPresetChanged: (@MainActor () -> Void)?
+
     /// Trailing counts on Library rows (All fonts, Duplicates, format badges).
     @Published var showLibraryCounters: Bool {
         didSet {
@@ -176,6 +199,8 @@ final class VaultSettings: ObservableObject {
             listColumnWidths = [:]
             listColumnOrder = FontListColumn.allCases
             listRowDensity = .compact
+            groupedListSortPreset = .styleOrder
+            flatListSortPreset = .byName
         } else {
             importFormats = ImportFormatOptions(
                 openType: defaults.bool(forKey: Keys.importOpenType),
@@ -201,6 +226,14 @@ final class VaultSettings: ObservableObject {
             } else {
                 listRowDensity = .compact
             }
+            groupedListSortPreset = Self.loadListSortPreset(
+                forKey: Keys.groupedListSortPreset,
+                default: .styleOrder
+            )
+            flatListSortPreset = Self.loadListSortPreset(
+                forKey: Keys.flatListSortPreset,
+                default: .byName
+            )
         }
         showLibraryCounters = defaults.object(forKey: Keys.showLibraryCounters) == nil
             ? true
@@ -258,7 +291,17 @@ final class VaultSettings: ObservableObject {
         visibleListColumns = FontListColumn.defaultVisible
         listColumnOrder = FontListColumn.allCases
         listRowDensity = .compact
+        groupedListSortPreset = .styleOrder
+        flatListSortPreset = .byName
         resetListColumnWidths()
+    }
+
+    private static func loadListSortPreset(forKey key: String, default defaultValue: FontListSortPreset) -> FontListSortPreset {
+        guard let raw = UserDefaults.standard.string(forKey: key),
+              let preset = FontListSortPreset(rawValue: raw) else {
+            return defaultValue
+        }
+        return preset
     }
 
     func resetInspectorFieldsToDefault() {

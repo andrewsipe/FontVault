@@ -50,21 +50,54 @@ enum CatalogBrowseSQL {
             "vaultPath", "psName", "uniqueName", "version", "foundry", "manufacturer", "designer",
             "vendorID", "copyright", "description", "trademark", "typographicFamily",
             "typographicSubfamily", "formatDetailed", "nameTableFullName",
-            "license", "licenseURL", "manufacturerURL", "designerURL"
+            "license", "licenseURL", "manufacturerURL", "designerURL",
+            "glyphCount", "weightClass", "widthClass", "isFixedPitch"
         ]
         return allowed.contains(sortColumn) ? sortColumn : "fullName"
     }
+
+    private static func jsonIntSortExpression(_ jsonKey: String) -> String {
+        "CAST(json_extract(extractedDetails, '\(jsonKey)') AS INTEGER)"
+    }
+
+    /// Matches `FontRecord.classificationSortSentinel` for missing OS/2 classification fields.
+    private static let jsonIntSortSentinel = Int.min
+
+    private static func jsonIntSortCoalesced(_ jsonKey: String) -> String {
+        "COALESCE(\(jsonIntSortExpression(jsonKey)), \(jsonIntSortSentinel))"
+    }
+
+    private static let slopeSortExpression = """
+        CASE
+            WHEN json_extract(extractedDetails, '$.fsSelectionItalic') = 1 THEN 1
+            WHEN json_extract(extractedDetails, '$.italicAngle') IS NOT NULL
+                AND ABS(CAST(json_extract(extractedDetails, '$.italicAngle') AS REAL)) > 0.01 THEN 1
+            ELSE 0
+        END
+        """
 
     static func fontSortExpression(sortColumn: String) -> String {
         switch sortColumn {
         case "family", "preferredFamily":
             return familyKeyExpression
+        case "glyphCount":
+            return jsonIntSortExpression("$.glyphCount")
+        case "weightClass":
+            return jsonIntSortExpression("$.weightClass")
+        case "widthClass":
+            return jsonIntSortExpression("$.widthClass")
+        case "isFixedPitch":
+            return jsonIntSortExpression("$.isFixedPitch")
         default:
             return validatedSortColumn(sortColumn)
         }
     }
 
     static func familyOrderExpression(sortColumn: String, ascending: Bool) -> String {
+        if sortColumn == FontListSortPreset.styleOrderSortColumn {
+            let direction = ascending ? "ASC" : "DESC"
+            return "MIN(fullName) COLLATE NOCASE \(direction)"
+        }
         let col = validatedSortColumn(sortColumn)
         let direction = ascending ? "ASC" : "DESC"
         switch col {
@@ -76,15 +109,37 @@ enum CatalogBrowseSQL {
             return "SUM(fileSize) \(direction)"
         case "dateAdded":
             return "MAX(dateAdded) \(direction)"
+        case "glyphCount":
+            return "MIN(\(jsonIntSortExpression("$.glyphCount"))) \(direction)"
+        case "weightClass":
+            return "MIN(\(jsonIntSortExpression("$.weightClass"))) \(direction)"
+        case "widthClass":
+            return "MIN(\(jsonIntSortExpression("$.widthClass"))) \(direction)"
+        case "isFixedPitch":
+            return "MIN(\(jsonIntSortExpression("$.isFixedPitch"))) \(direction)"
         default:
             return "MIN(\(col)) COLLATE NOCASE \(direction)"
         }
     }
 
     static func fontOrderClause(sortColumn: String, ascending: Bool) -> String {
+        if sortColumn == FontListSortPreset.styleOrderSortColumn {
+            return styleOrderClause(ascending: ascending)
+        }
         let col = fontSortExpression(sortColumn: sortColumn)
         let direction = ascending ? "ASC" : "DESC"
         return "\(col) COLLATE NOCASE \(direction), vaultPath ASC"
+    }
+
+    static func styleOrderClause(ascending: Bool) -> String {
+        let direction = ascending ? "ASC" : "DESC"
+        return """
+            \(jsonIntSortCoalesced("$.widthClass")) \(direction), \
+            \(jsonIntSortCoalesced("$.weightClass")) \(direction), \
+            \(slopeSortExpression) \(direction), \
+            fullName COLLATE NOCASE \(direction), \
+            vaultPath ASC
+            """
     }
 
     /// Per-field `COUNT DISTINCT` / populated / `MIN` fragments for `fetchFamilySummaries`.

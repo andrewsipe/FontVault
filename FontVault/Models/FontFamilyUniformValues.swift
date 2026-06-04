@@ -35,7 +35,8 @@ struct FontFamilyUniformValues: Hashable, Sendable {
         case .copyright: return copyright
         case .formatDetailed: return formatDetailed
         case .name, .fontFamily, .fullNameLiteral, .vendor, .license, .licenseURL,
-             .manufacturerURL, .designerURL, .format, .size, .importDate, .path:
+             .manufacturerURL, .designerURL, .format, .size, .importDate, .path,
+             .glyphCount, .weightClass, .widthClass, .mono:
             return nil
         }
     }

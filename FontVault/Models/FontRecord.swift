@@ -168,6 +168,35 @@ struct FontRecord: Codable, FetchableRecord, MutablePersistableRecord, Identifia
         FontMetadataFieldKey.allCases.contains { !activeMetadataIssues(for: $0).isEmpty }
     }
 
+    // MARK: - Classification (OS/2 / maxp — for list sort and display)
+
+    private static let classificationSortSentinel = Int.min
+
+    var sortGlyphCount: Int {
+        extractedDetails.glyphCount ?? Self.classificationSortSentinel
+    }
+
+    var sortWeightClass: Int {
+        extractedDetails.weightClass ?? Self.classificationSortSentinel
+    }
+
+    var sortWidthClass: Int {
+        extractedDetails.widthClass ?? Self.classificationSortSentinel
+    }
+
+    /// 0 = no, 1 = yes, sentinel = unknown (sorts before zero).
+    var sortFixedPitch: Int {
+        guard let fixed = extractedDetails.isFixedPitch else { return Self.classificationSortSentinel }
+        return fixed ? 1 : 0
+    }
+
+    /// 0 = upright, 1 = italic (fsSelection or non-zero italic angle).
+    var sortSlope: Int {
+        if extractedDetails.fsSelectionItalic == true { return 1 }
+        if let angle = extractedDetails.italicAngle, abs(angle) > 0.01 { return 1 }
+        return 0
+    }
+
     /// Persists PostScript vs vault file name into catalog metadata issues.
     mutating func reconcilePostScriptFilenameIssues() {
         var merged = metadataIssues.issues(for: .psName).filter {

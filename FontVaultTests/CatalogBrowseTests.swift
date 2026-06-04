@@ -29,6 +29,71 @@ final class CatalogBrowseTests: XCTestCase {
         }
     }
 
+    func testStyleOrderSortWithinFamily() throws {
+        guard var regular = try store.fetchRecord(vaultPath: "a/Regular.otf"),
+              var bold = try store.fetchRecord(vaultPath: "a/Bold.otf") else {
+            XCTFail("missing seed fonts")
+            return
+        }
+        regular.extractedDetails.widthClass = 5
+        regular.extractedDetails.weightClass = 400
+        bold.extractedDetails.widthClass = 5
+        bold.extractedDetails.weightClass = 700
+        var condensed = makeRecord(
+            path: "a/Cond.otf", family: "Acme", fullName: "Acme Condensed", format: "otf", size: 150, date: 1_700_000_000
+        )
+        condensed.extractedDetails.widthClass = 3
+        condensed.extractedDetails.weightClass = 400
+        try store.update(regular)
+        try store.update(bold)
+        _ = try store.insert(condensed)
+
+        let fonts = try store.fetchFontsForFamily(
+            familyKey: "Acme",
+            query: FontTableBrowseQuery(),
+            sortColumn: FontListSortPreset.styleOrderSortColumn,
+            ascending: true
+        )
+        XCTAssertEqual(fonts.map(\.vaultPath), ["a/Cond.otf", "a/Regular.otf", "a/Bold.otf"])
+    }
+
+    func testStyleOrderFlatListPaths() throws {
+        guard var regular = try store.fetchRecord(vaultPath: "a/Regular.otf"),
+              var beta = try store.fetchRecord(vaultPath: "b/Light.ttf") else {
+            XCTFail("missing seed fonts")
+            return
+        }
+        regular.extractedDetails.widthClass = 5
+        regular.extractedDetails.weightClass = 400
+        beta.extractedDetails.widthClass = 3
+        beta.extractedDetails.weightClass = 300
+        try store.update(regular)
+        try store.update(beta)
+
+        let paths = try store.fetchOrderedVaultPaths(
+            query: FontTableBrowseQuery(),
+            sortColumn: FontListSortPreset.styleOrderSortColumn,
+            ascending: true,
+            limit: 10,
+            offset: 0
+        )
+        let betaIndex = paths.firstIndex(of: "b/Light.ttf")
+        let regularIndex = paths.firstIndex(of: "a/Regular.otf")
+        XCTAssertNotNil(betaIndex)
+        XCTAssertNotNil(regularIndex)
+        XCTAssertLessThan(betaIndex!, regularIndex!)
+    }
+
+    func testStyleOrderFamilySummariesAlphabetical() throws {
+        let summaries = try store.fetchFamilySummaries(
+            query: FontTableBrowseQuery(),
+            sortColumn: FontListSortPreset.styleOrderSortColumn,
+            ascending: true
+        )
+        let keys = summaries.map(\.id).filter { $0 != "_Unknown" }
+        XCTAssertEqual(keys, keys.sorted { $0.localizedCaseInsensitiveCompare($1) == .orderedAscending })
+    }
+
     private func makeRecord(
         path: String,
         family: String,

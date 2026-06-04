@@ -250,6 +250,9 @@ enum FontListGrouping {
         ascending: Bool
     ) -> [FontRecord] {
         fonts.sorted { lhs, rhs in
+            if column == FontListSortPreset.styleOrderSortColumn {
+                return FontListStyleSort.compare(lhs, rhs, ascending: ascending)
+            }
             let ordered: Bool
             switch column {
             case "family":
@@ -281,6 +284,8 @@ enum FontListGrouping {
 
         let ordered: Bool
         switch sortColumn {
+        case FontListSortPreset.styleOrderSortColumn:
+            ordered = leftName.localizedCaseInsensitiveCompare(rightName) == .orderedAscending
         case "family":
             ordered = leftName.localizedCaseInsensitiveCompare(rightName) == .orderedAscending
         case "format":

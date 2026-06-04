@@ -47,6 +47,24 @@ struct FontExtractedDetails: Codable, Sendable, Equatable, Hashable {
     self == FontExtractedDetails.empty
   }
 
+  /// Font table / list display (empty when unknown).
+  var glyphCountDisplay: String {
+    glyphCount.map(String.init) ?? ""
+  }
+
+  var weightClassDisplay: String {
+    weightClass.map(String.init) ?? ""
+  }
+
+  var widthClassDisplay: String {
+    widthClass.map(String.init) ?? ""
+  }
+
+  var fixedPitchDisplay: String {
+    guard let isFixedPitch else { return "" }
+    return isFixedPitch ? "Yes" : "No"
+  }
+
   /// Inspector sections (always shown when non-empty values exist).
   func inspectorSections() -> [(title: String, rows: [(label: String, value: String)])] {
     var sections: [(title: String, rows: [(label: String, value: String)])] = []

@@ -107,6 +107,11 @@ struct FontVaultApp: App {
                     .keyboardShortcut("g", modifiers: [.command, .shift])
                     .disabled(appState.browserMode != .allFonts)
 
+                Button(AppMenuCopy.resetListSortToDefault) {
+                    appState.resetListSortToDefault()
+                }
+                .disabled(appState.browserMode != .allFonts)
+
                 Divider()
 
                 Button(AppMenuCopy.fontTable) {
