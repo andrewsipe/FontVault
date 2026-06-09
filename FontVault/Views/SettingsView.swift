@@ -11,6 +11,7 @@ struct SettingsView: View {
                 .tag(SettingsTab.general)
 
             FontTableSettingsTab()
+                .frame(maxWidth: .infinity, maxHeight: .infinity)
                 .tabItem { Label(SettingsTab.fontTable.title, systemImage: SettingsTab.fontTable.systemImage) }
                 .tag(SettingsTab.fontTable)
 
@@ -140,97 +141,142 @@ struct FontTableSettingsTab: View {
 
     var body: some View {
         VStack(alignment: .leading, spacing: 0) {
-            Form {
-                Section {
-                    Picker("Grouped list", selection: $settings.groupedListSortPreset) {
-                        ForEach(FontListSortPreset.allCases) { preset in
-                            Text(preset.label).tag(preset)
-                        }
-                    }
-                    Picker("Flat list", selection: $settings.flatListSortPreset) {
-                        ForEach(FontListSortPreset.allCases) { preset in
-                            Text(preset.label).tag(preset)
-                        }
-                    }
-                } header: {
-                    Text("Default sort")
-                } footer: {
-                    defaultSortSectionFooter
-                }
+            sortAndDensityControlBar
+            Divider()
+            columnList
+            Divider()
+            columnListFooter
+        }
+        .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topLeading)
+        .padding(DesignMetrics.windowMargin)
+    }
 
-                Section {
-                    Picker("Density", selection: $settings.listRowDensity) {
+    // MARK: - Control bar (fixed height, non-scrolling)
+
+    private var sortAndDensityControlBar: some View {
+        VStack(alignment: .leading, spacing: 10) {
+            HStack(alignment: .center, spacing: 20) {
+                settingsControlGroup(label: "Grouped sort") {
+                    sortPresetPicker(selection: $settings.groupedListSortPreset)
+                }
+                settingsControlGroup(label: "Flat sort") {
+                    sortPresetPicker(selection: $settings.flatListSortPreset)
+                }
+                Spacer(minLength: 12)
+                settingsControlGroup(label: "Row density") {
+                    Picker("", selection: $settings.listRowDensity) {
                         ForEach(FontListRowDensity.allCases) { density in
                             Text(density.label).tag(density)
                         }
                     }
                     .pickerStyle(.segmented)
-                } header: {
-                    Text("Row layout")
-                } footer: {
-                    Text(settings.listRowDensity.detail)
+                    .labelsHidden()
+                    .fixedSize()
                 }
             }
-            .formStyle(.grouped)
-            .padding(.horizontal, DesignMetrics.windowMargin)
-            .padding(.top, DesignMetrics.windowMargin)
+            Text(sortControlCaption)
+                .font(.caption2)
+                .foregroundStyle(.tertiary)
+                .fixedSize(horizontal: false, vertical: true)
+        }
+        .padding(.bottom, 12)
+    }
 
-            columnsSection
+    private func sortPresetPicker(selection: Binding<FontListSortPreset>) -> some View {
+        Picker("", selection: selection) {
+            ForEach(FontListSortPreset.allCases) { preset in
+                Text(preset.label).tag(preset)
+            }
+        }
+        .labelsHidden()
+        .frame(minWidth: 132)
+    }
+
+    private var sortControlCaption: String {
+        let usesStyleOrder = settings.groupedListSortPreset == .styleOrder
+            || settings.flatListSortPreset == .styleOrder
+        if usesStyleOrder {
+            return """
+            Style order: width → weight → upright before italic → name. \
+            A column-header sort overrides these until View → Reset List Sort to Default.
+            """
+        }
+        return "A column-header sort overrides default sort until View → Reset List Sort to Default."
+    }
+
+    private func settingsControlGroup<Content: View>(
+        label: String,
+        @ViewBuilder content: () -> Content
+    ) -> some View {
+        HStack(spacing: 8) {
+            Text(label)
+                .font(.caption)
+                .foregroundStyle(.secondary)
+            content()
         }
     }
 
-    private var defaultSortSectionFooter: some View {
-        VStack(alignment: .leading, spacing: 6) {
-            Text("Grouped: \(settings.groupedListSortPreset.detail)")
-            Text("Flat: \(settings.flatListSortPreset.detail)")
-            Text("A column-header sort overrides these until you choose View → Reset List Sort to Default.")
-        }
-    }
+    // MARK: - Column list (owns remaining vertical space)
 
-    private var columnsSection: some View {
-        VStack(alignment: .leading, spacing: DesignMetrics.controlSpacing) {
-            Text("Visible columns")
-                .font(.headline)
-                .padding(.horizontal, DesignMetrics.windowMargin)
-                .padding(.top, DesignMetrics.sectionSpacing)
-
-            Text(
-                """
-                Turn columns on or off and drag rows to reorder (Name stays first). \
-                In the table: click a header to sort, drag headers to reorder columns, \
-                drag dividers to resize, right‑click headers for visibility.
-                """
-            )
-            .font(.caption)
-            .foregroundStyle(.secondary)
-            .fixedSize(horizontal: false, vertical: true)
-            .padding(.horizontal, DesignMetrics.windowMargin)
-
-            List {
+    private var columnList: some View {
+        List {
+            Section {
                 ForEach(settings.listColumnOrder) { column in
                     HStack(spacing: 10) {
                         Image(systemName: "line.3.horizontal")
                             .foregroundStyle(column == .name ? .quaternary : .secondary)
                             .frame(width: 16)
-                        Toggle(isOn: columnBinding(column)) {
+                        HStack(spacing: 6) {
                             Text(column.title)
+                                .foregroundStyle(column.isRequired ? .secondary : .primary)
+                            if column.isRequired {
+                                Text("required")
+                                    .font(.caption2)
+                                    .foregroundStyle(.tertiary)
+                                    .padding(.horizontal, 5)
+                                    .padding(.vertical, 1)
+                                    .background(.quaternary.opacity(0.6), in: RoundedRectangle(cornerRadius: 4))
+                            }
                         }
-                        .disabled(column.isRequired)
+                        Spacer(minLength: 0)
+                        Toggle("", isOn: columnBinding(column))
+                            .labelsHidden()
+                            .disabled(column.isRequired)
                     }
                 }
                 .onMove { settings.moveListColumn(fromOffsets: $0, toOffset: $1) }
+            } header: {
+                visibleColumnsSectionHeader
             }
-            .listStyle(.inset)
-            .frame(minHeight: 160, maxHeight: .infinity)
-
-            HStack {
-                Button(AppMenuCopy.resetColumnWidths) { settings.resetListColumnWidths() }
-                Button("Reset to Defaults") { settings.resetListColumnsToDefault() }
-                Spacer()
-            }
-            .padding(.horizontal, DesignMetrics.windowMargin)
-            .padding(.bottom, DesignMetrics.windowMargin)
         }
+        .listStyle(.plain)
+        .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topLeading)
+    }
+
+    private var visibleColumnsSectionHeader: some View {
+        HStack(spacing: 10) {
+            Text("Visible columns")
+                .font(.caption)
+                .fontWeight(.medium)
+            Divider()
+            Text("Drag to reorder · right-click headers in table for quick access")
+                .font(.caption2)
+                .foregroundStyle(.tertiary)
+                .lineLimit(2)
+                .minimumScaleFactor(0.85)
+        }
+        .textCase(nil)
+        .padding(.top, 6)
+        .padding(.bottom, 2)
+    }
+
+    private var columnListFooter: some View {
+        HStack(spacing: 8) {
+            Button(AppMenuCopy.resetColumnWidths) { settings.resetListColumnWidths() }
+            Button("Reset to Defaults") { settings.resetListColumnsToDefault() }
+            Spacer()
+        }
+        .padding(.top, 10)
     }
 
     private func columnBinding(_ column: FontListColumn) -> Binding<Bool> {

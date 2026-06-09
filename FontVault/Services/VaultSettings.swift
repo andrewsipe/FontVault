@@ -367,6 +367,9 @@ final class VaultSettings: ObservableObject {
     private func persistListColumnOrder() {
         let raw = listColumnOrder.map(\.rawValue)
         UserDefaults.standard.set(raw, forKey: Keys.listColumnOrder)
+        // Force synchronization to ensure the order is written to disk immediately.
+        // This prevents loss of column order if the app is terminated unexpectedly.
+        UserDefaults.standard.synchronize()
         syncVisibleColumnsToOrder()
     }
 

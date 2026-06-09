@@ -1,9 +1,14 @@
 import AppKit
 import SwiftUI
 
-/// Column header that receives right-click (events do not reach `NSOutlineView`).
+/// Column header with click-vs-drag differentiation for sort/reorder.
+///
+/// `NSTableHeaderView.mouseDown` runs an internal tracking loop that returns only on mouse up.
+/// We capture state before/after to determine if it was a click (sort) or drag (reorder).
 final class FontListOutlineHeaderView: NSTableHeaderView {
     weak var interaction: FontListOutlineCoordinator?
+
+    private static let dragThreshold: CGFloat = 4
 
     override func rightMouseDown(with event: NSEvent) {
         showColumnMenu(for: event)
@@ -14,6 +19,57 @@ final class FontListOutlineHeaderView: NSTableHeaderView {
             showColumnMenu(for: event)
         } else {
             super.otherMouseDown(with: event)
+        }
+    }
+
+    override func mouseDown(with event: NSEvent) {
+        let startLocation = event.locationInWindow
+        let localPoint = convert(startLocation, from: nil)
+
+        // Find which column was clicked by checking header rects
+        var clickedColumn: NSTableColumn?
+        if let tableView = tableView {
+            for (index, col) in tableView.tableColumns.enumerated() where !col.isHidden {
+                let rect = headerRect(ofColumn: index)
+                if rect.contains(localPoint) {
+                    clickedColumn = col
+                    break
+                }
+            }
+        }
+
+        // Capture column order before the tracking loop
+        let columnOrderBefore = tableView?.tableColumns.map(\.identifier.rawValue) ?? []
+
+        // Mark drag in progress to block applyStoredColumnOrderIfNeeded during drag
+        interaction?.columnDragDidBegin()
+
+        // This enters a tracking loop and returns on mouse up
+        super.mouseDown(with: event)
+
+        // Now we're at mouse up - check what happened
+        guard let window = window else {
+            interaction?.columnDragDidEnd()
+            return
+        }
+
+        let currentMouseScreen = NSEvent.mouseLocation
+        let currentMouseWindow = window.convertPoint(fromScreen: currentMouseScreen)
+        let dx = currentMouseWindow.x - startLocation.x
+        let dy = currentMouseWindow.y - startLocation.y
+        let distanceSquared = dx * dx + dy * dy
+        let wasDrag = distanceSquared >= Self.dragThreshold * Self.dragThreshold
+
+        // Check if columns were reordered
+        let columnOrderAfter = tableView?.tableColumns.map(\.identifier.rawValue) ?? []
+        let columnsReordered = columnOrderBefore != columnOrderAfter
+
+        // End the drag tracking
+        interaction?.columnDragDidEnd()
+
+        // If it was a simple click (not a drag, no reorder), trigger sort
+        if !wasDrag, !columnsReordered, let clickedColumn = clickedColumn {
+            interaction?.handleHeaderClick(for: clickedColumn, event: event)
         }
     }
 

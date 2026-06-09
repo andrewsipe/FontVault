@@ -23,7 +23,7 @@ enum FontListSortPreset: String, Codable, CaseIterable, Identifiable, Sendable {
 
     var label: String {
         switch self {
-        case .byName: return "By name"
+        case .byName: return "Alphabetical"
         case .styleOrder: return "Style order"
         }
     }

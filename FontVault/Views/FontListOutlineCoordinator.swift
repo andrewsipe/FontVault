@@ -25,6 +25,7 @@ final class FontListOutlineCoordinator: NSObject {
     private var isSyncingSelection = false
     private var isProgrammaticExpansionChange = false
     private var isBatchingColumnChanges = false
+    private var isColumnDragInProgress = false
     private var activeExportDragFileCount = 0
     private var vaultPathToRow: [String: Int] = [:]
     /// Skips AppState→outline expansion sync while outline-driven expand/collapse updates `collapsedFamilies`.
@@ -34,6 +35,12 @@ final class FontListOutlineCoordinator: NSObject {
     /// Row/column for Edit → Find (hover, click, or context menu).
     private var lastFindAnchor: (row: Int, column: FontListColumn?)?
     private var columnMoveObservation: NSObjectProtocol?
+
+    deinit {
+        if let observation = columnMoveObservation {
+            NotificationCenter.default.removeObserver(observation)
+        }
+    }
 
     /// Exposed for context menu builder enablement rules.
     var appStateForMenu: AppState? { appState }
@@ -191,7 +198,9 @@ final class FontListOutlineCoordinator: NSObject {
             object: outlineView,
             queue: .main
         ) { [weak self] _ in
-            Task { @MainActor in
+            // Run synchronously on main - do NOT defer with Task, as SwiftUI updates
+            // can race and call applyStoredColumnOrderIfNeeded before persist.
+            MainActor.assumeIsolated {
                 self?.persistOutlineColumnOrderFromHeaderDrag()
             }
         }
@@ -202,10 +211,24 @@ final class FontListOutlineCoordinator: NSObject {
               let outlineView,
               let appState else { return }
         appState.settings.adoptListColumnOrder(fromTableColumns: outlineView.tableColumns)
+        // Note: Don't clear isColumnDragInProgress here — the notification may fire
+        // before mouseUp, and we need the flag to stay true until the gesture ends.
+    }
+
+    /// Called by header view when a column drag gesture begins.
+    func columnDragDidBegin() {
+        isColumnDragInProgress = true
+    }
+
+    /// Called by header view when a column drag gesture ends (even without a column move).
+    func columnDragDidEnd() {
+        // Persist is now synchronous, so we can clear the flag immediately.
+        isColumnDragInProgress = false
     }
 
     /// Applies Settings / persisted order to the outline (e.g. after reorder in Font Table settings).
     private func applyStoredColumnOrderIfNeeded(settings: VaultSettings, outlineView: NSOutlineView) {
+        guard !isColumnDragInProgress else { return }
         let stored = settings.listColumnOrder.map(\.rawValue)
         let current = outlineView.tableColumns.map(\.identifier.rawValue)
         guard stored != current else { return }
@@ -1228,26 +1251,35 @@ extension FontListOutlineCoordinator: NSOutlineViewDelegate {
         return true
     }
 
+    /// Called by AppKit on mouse down in a header — we no longer sort here.
+    /// Sorting is handled in `handleHeaderClick` after confirming it's a click, not a drag.
     func outlineView(_ outlineView: NSOutlineView, mouseDownInHeaderOf tableColumn: NSTableColumn) {
+        // Intentionally empty: sorting moved to handleHeaderClick for click-vs-drag differentiation.
+    }
+
+    /// Handles a confirmed click (not drag) on a column header to trigger sorting.
+    func handleHeaderClick(for tableColumn: NSTableColumn, event: NSEvent) {
         guard let column = columnForIdentifier(tableColumn.identifier),
               let appState,
-              let event = NSApp.currentEvent,
+              let outlineView,
               event.type != .rightMouseDown,
               event.type != .otherMouseDown,
               !isEventInColumnResizeZone(event, outlineView: outlineView) else { return }
-        deferToNextRunLoop { [weak self, weak appState] in
-            guard let self, let appState else { return }
-            if appState.sortColumn == column.databaseSortColumn {
-                appState.sortAscending.toggle()
-            } else {
-                appState.sortColumn = column.databaseSortColumn
-                appState.sortAscending = true
-            }
-            self.sortColumn = appState.sortColumn
-            self.sortAscending = appState.sortAscending
-            self.updateSortIndicators()
-            appState.scheduleRefreshList()
+
+        // Special case: Name column shows the sort indicator when using styleOrder preset.
+        // Clicking Name should toggle ascending/descending, not switch to fullName sort.
+        if columnShowsSortIndicator(column) {
+            // Already sorted by this column (or Name showing styleOrder) - toggle direction
+            appState.sortAscending.toggle()
+        } else {
+            // Switching to a different column's sort
+            appState.sortColumn = column.databaseSortColumn
+            appState.sortAscending = true
         }
+        sortColumn = appState.sortColumn
+        sortAscending = appState.sortAscending
+        updateSortIndicators()
+        appState.scheduleRefreshList()
     }
 
     func outlineView(
